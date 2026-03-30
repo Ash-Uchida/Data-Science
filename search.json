@@ -1,0 +1,360 @@
+[
+  {
+    "objectID": "competition.html",
+    "href": "competition.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Competitions",
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "competition.html#title-2-header",
+    "href": "competition.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Competitions",
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html",
+    "href": "Cleansing_Projects/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html",
+    "href": "Full_Stack/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project2.html",
+    "href": "Competition/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competitions",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Exploration",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Exploration",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "ml.html",
+    "href": "ml.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "ml.html#title-2-header",
+    "href": "ml.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html",
+    "href": "Machine_Learning/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html",
+    "href": "Machine_Learning/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Ash Uchida’s CV",
+    "section": "",
+    "text": "Aspiring Software Engineer and Data Analyst\n\nMy other portfolio | My Linkden\n\n\n\nI’m a student at Brigham Young University - Idaho\n\n\nBachelor of Computer Science Minor of Data Science Certificate in Cyber Security\n\n\n\nHam radio, Cloud Computing, Databases\n\n\n\n\nBrigham Young University - Idaho September 2024 - now\n\n\n\n2026 2nd Place Hackathon Winner\n2024 – 2026 BYU-Idaho Academic Scholarship\n2020 – 2024 Huron Heights Secondary School Honor Roll\n\n\n\n\nFeb 27-28 2026 Built a governed analytics platform (“Sales Dashboard Factory”) in a 17-hour hackathon sprint, earning 2nd place in the Data App Factory challenge. Developed a Streamlit-based application with conversational AI that converts natural language into secure, validated SQL queries using Databricks and Unity Catalog. Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a scalable, secure data solution.\n\n\n\nDec 2025 – Jan 2026 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and Zoom APIs to eliminate double booking. Engineered a serverless backend on Vercel using Supabase and secure OAuth token handling, maintaining data persistence for all user bookings. Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings through a guided flow.\n\n\n\nFeb 2025 – Nov 2025 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals were met. Coordinated logistics for 35+ teams and 150+ attendees, overseeing the seamless distribution of information and food throughout the 24 hour event. Evaluated participant projects as a judge and managed the creation and presentation of official awards for the closing ceremony.\n\n\n\n\n\nJul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
+  },
+  {
+    "objectID": "resume.html#currently",
+    "href": "resume.html#currently",
+    "title": "Ash Uchida’s CV",
+    "section": "",
+    "text": "I’m a student at Brigham Young University - Idaho\n\n\nBachelor of Computer Science Minor of Data Science Certificate in Cyber Security\n\n\n\nHam radio, Cloud Computing, Databases"
+  },
+  {
+    "objectID": "resume.html#education",
+    "href": "resume.html#education",
+    "title": "Ash Uchida’s CV",
+    "section": "",
+    "text": "Brigham Young University - Idaho September 2024 - now"
+  },
+  {
+    "objectID": "resume.html#awards",
+    "href": "resume.html#awards",
+    "title": "Ash Uchida’s CV",
+    "section": "",
+    "text": "2026 2nd Place Hackathon Winner\n2024 – 2026 BYU-Idaho Academic Scholarship\n2020 – 2024 Huron Heights Secondary School Honor Roll\n\n\n\n\nFeb 27-28 2026 Built a governed analytics platform (“Sales Dashboard Factory”) in a 17-hour hackathon sprint, earning 2nd place in the Data App Factory challenge. Developed a Streamlit-based application with conversational AI that converts natural language into secure, validated SQL queries using Databricks and Unity Catalog. Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a scalable, secure data solution.\n\n\n\nDec 2025 – Jan 2026 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and Zoom APIs to eliminate double booking. Engineered a serverless backend on Vercel using Supabase and secure OAuth token handling, maintaining data persistence for all user bookings. Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings through a guided flow.\n\n\n\nFeb 2025 – Nov 2025 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals were met. Coordinated logistics for 35+ teams and 150+ attendees, overseeing the seamless distribution of information and food throughout the 24 hour event. Evaluated participant projects as a judge and managed the creation and presentation of official awards for the closing ceremony."
+  },
+  {
+    "objectID": "resume.html#experience",
+    "href": "resume.html#experience",
+    "title": "Ash Uchida’s CV",
+    "section": "",
+    "text": "Jul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
+  },
+  {
+    "objectID": "Story_Telling/project3.html",
+    "href": "Story_Telling/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "exploration.html",
+    "href": "exploration.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#title-2-header",
+    "href": "exploration.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "index.html#title-2-header",
+    "href": "index.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "story_telling.html",
+    "href": "story_telling.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "story_telling.html#title-2-header",
+    "href": "story_telling.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competitions",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competitions",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project2.html",
+    "href": "Full_Stack/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "full_stack.html",
+    "href": "full_stack.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#title-2-header",
+    "href": "full_stack.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  }
+]
