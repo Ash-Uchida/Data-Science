@@ -132,37 +132,44 @@
   {
     "objectID": "resume.html",
     "href": "resume.html",
-    "title": "Ash Uchida’s CV",
+    "title": "Ash Uchida’s Resume",
     "section": "",
-    "text": "Aspiring Software Engineer and Data Analyst\n\nMy other portfolio | My Linkden\n\n\n\nI’m a student at Brigham Young University - Idaho\n\n\nBachelor of Computer Science Minor of Data Science Certificate in Cyber Security\n\n\n\nHam radio, Cloud Computing, Databases\n\n\n\n\nBrigham Young University - Idaho September 2024 - now\n\n\n\n2026 2nd Place Hackathon Winner\n2024 – 2026 BYU-Idaho Academic Scholarship\n2020 – 2024 Huron Heights Secondary School Honor Roll\n\n\n\n\nFeb 27-28 2026 Built a governed analytics platform (“Sales Dashboard Factory”) in a 17-hour hackathon sprint, earning 2nd place in the Data App Factory challenge. Developed a Streamlit-based application with conversational AI that converts natural language into secure, validated SQL queries using Databricks and Unity Catalog. Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a scalable, secure data solution.\n\n\n\nDec 2025 – Jan 2026 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and Zoom APIs to eliminate double booking. Engineered a serverless backend on Vercel using Supabase and secure OAuth token handling, maintaining data persistence for all user bookings. Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings through a guided flow.\n\n\n\nFeb 2025 – Nov 2025 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals were met. Coordinated logistics for 35+ teams and 150+ attendees, overseeing the seamless distribution of information and food throughout the 24 hour event. Evaluated participant projects as a judge and managed the creation and presentation of official awards for the closing ceremony.\n\n\n\n\n\nJul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
+    "text": "Aspiring Software Engineer and Data Analyst"
   },
   {
     "objectID": "resume.html#currently",
     "href": "resume.html#currently",
-    "title": "Ash Uchida’s CV",
-    "section": "",
-    "text": "I’m a student at Brigham Young University - Idaho\n\n\nBachelor of Computer Science Minor of Data Science Certificate in Cyber Security\n\n\n\nHam radio, Cloud Computing, Databases"
+    "title": "Ash Uchida’s Resume",
+    "section": "Currently",
+    "text": "Currently\nI’m a student at Brigham Young University - Idaho\n\nSpecializing in\nBachelor of Computer Science Minor of Data Science Certificate in Cyber Security\n\n\nResearch interests\nHam radio, Cloud Computing, Databases"
   },
   {
     "objectID": "resume.html#education",
     "href": "resume.html#education",
-    "title": "Ash Uchida’s CV",
-    "section": "",
-    "text": "Brigham Young University - Idaho September 2024 - now"
+    "title": "Ash Uchida’s Resume",
+    "section": "Education",
+    "text": "Education\nBrigham Young University - Idaho September 2024 - now"
   },
   {
     "objectID": "resume.html#awards",
     "href": "resume.html#awards",
-    "title": "Ash Uchida’s CV",
-    "section": "",
-    "text": "2026 2nd Place Hackathon Winner\n2024 – 2026 BYU-Idaho Academic Scholarship\n2020 – 2024 Huron Heights Secondary School Honor Roll\n\n\n\n\nFeb 27-28 2026 Built a governed analytics platform (“Sales Dashboard Factory”) in a 17-hour hackathon sprint, earning 2nd place in the Data App Factory challenge. Developed a Streamlit-based application with conversational AI that converts natural language into secure, validated SQL queries using Databricks and Unity Catalog. Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a scalable, secure data solution.\n\n\n\nDec 2025 – Jan 2026 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and Zoom APIs to eliminate double booking. Engineered a serverless backend on Vercel using Supabase and secure OAuth token handling, maintaining data persistence for all user bookings. Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings through a guided flow.\n\n\n\nFeb 2025 – Nov 2025 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals were met. Coordinated logistics for 35+ teams and 150+ attendees, overseeing the seamless distribution of information and food throughout the 24 hour event. Evaluated participant projects as a judge and managed the creation and presentation of official awards for the closing ceremony."
+    "title": "Ash Uchida’s Resume",
+    "section": "Awards",
+    "text": "Awards\n2026 2nd Place Hackathon Winner\n2024 – 2026 BYU-Idaho Academic Scholarship\n2020 – 2024 Huron Heights Secondary School Honor Roll"
+  },
+  {
+    "objectID": "resume.html#projects",
+    "href": "resume.html#projects",
+    "title": "Ash Uchida’s Resume",
+    "section": "Projects",
+    "text": "Projects\n\nHackUSU\nFeb 27-28 2026 Built a governed analytics platform (“Sales Dashboard Factory”) in a 17-hour hackathon sprint, earning 2nd place in the Data App Factory challenge. Developed a Streamlit-based application with conversational AI that converts natural language into secure, validated SQL queries using Databricks and Unity Catalog. Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a scalable, secure data solution.\n\n\nZoom Zone - Personal Project\nDec 2025 – Jan 2026 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and Zoom APIs to eliminate double booking. Engineered a serverless backend on Vercel using Supabase and secure OAuth token handling, maintaining data persistence for all user bookings. Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings through a guided flow.\n\n\nSecretary of the Hackathon Society\nFeb 2025 – Nov 2025 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals were met. Coordinated logistics for 35+ teams and 150+ attendees, overseeing the seamless distribution of information and food throughout the 24 hour event. Evaluated participant projects as a judge and managed the creation and presentation of official awards for the closing ceremony."
   },
   {
     "objectID": "resume.html#experience",
     "href": "resume.html#experience",
-    "title": "Ash Uchida’s CV",
-    "section": "",
-    "text": "Jul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
+    "title": "Ash Uchida’s Resume",
+    "section": "Experience",
+    "text": "Experience\nJul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
   },
   {
     "objectID": "Story_Telling/project3.html",
@@ -251,16 +258,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "about me",
+    "title": "My Journey in Data Science Programming",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\n🎓 BYU-Idaho — 4.0 GPA\n\n🏆 2nd Place Hackathon Winner\n\n💻 Full-Stack & Data Science Projects\n\n🔐 Cybersecurity Certificate"
   },
   {
-    "objectID": "index.html#title-2-header",
-    "href": "index.html#title-2-header",
-    "title": "about me",
+    "objectID": "index.html#ash-uchida",
+    "href": "index.html#ash-uchida",
+    "title": "My Journey in Data Science Programming",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\n🎓 BYU-Idaho — 4.0 GPA\n\n🏆 2nd Place Hackathon Winner\n\n💻 Full-Stack & Data Science Projects\n\n🔐 Cybersecurity Certificate"
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "My Journey in Data Science Programming",
+    "section": "Featured Work",
+    "text": "Featured Work\n\nHackathon Winner (2nd Place)\nBuilt a secure analytics platform that converts natural language into validated SQL using AI and Databricks, enabling users to safely query data without writing SQL.\n\n\nZoom Zone\nDeveloped a full-stack scheduling platform integrating Google Calendar and Zoom APIs, allowing users to automate meeting creation and avoid scheduling conflicts."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "My Journey in Data Science Programming",
+    "section": "About Me",
+    "text": "About Me\nI’m a Computer Science student with a passion for building applications and working with data. I enjoy creating full-stack projects, exploring machine learning, and solving real-world problems.\nOutside of tech, I enjoy snowboarding, painting murals, and staying active outdoors."
   },
   {
     "objectID": "story_telling.html",
