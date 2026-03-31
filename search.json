@@ -44,121 +44,380 @@
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project3.html",
-    "href": "Cleansing_Projects/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - Famous Names",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pl.read_csv(\"/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv\")",
     "crumbs": [
       "Data Cleansing",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project1.html",
-    "href": "Cleansing_Projects/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project1.html",
-    "href": "Full_Stack/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Competition/project2.html",
-    "href": "Competition/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competitions",
       "Project 2"
     ]
   },
   {
-    "objectID": "Cleansing_Exploration/project3.html",
-    "href": "Cleansing_Exploration/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "Cleansing_Projects/project2.html#question-1",
+    "href": "Cleansing_Projects/project2.html#question-1",
+    "title": "Client Report - Famous Names",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nMake a new column that represents the total number of babies with your name for only those states in which you have lived. (If you have only ever lived in one state, pick at least one other state so you get practice summing across columns). Make a graph displaying that total for your name over time.\nFirst I need to filter my name out of the file, then select my name from the states I’ve lived which is AZ and ID\n\n\nShow the code\n# Q1\nash = df.filter(pl.col(\"name\") == \"Ash\")\nstates = ash.with_columns(\n  (pl.col(\"AZ\") + pl.col(\"ID\")).alias(\"total\")\n)\n\n(\n  ggplot(states, aes(x=\"year\", y=\"total\"))\n  +geom_line(color=\"blue\", size=1)\n  +scale_x_continuous(format=\"d\")\n  +geom_vline(xintercept=2024, color=\"red\", linetype=2)\n  +geom_text(x=2023, y= -1, color='red', hjust=1, label=\"When I first came to Idaho (2024)\")\n)",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html#question-2",
+    "href": "Cleansing_Projects/project2.html#question-2",
+    "title": "Client Report - Famous Names",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nLet’s look at a name that is special for members of the church: Brigham. For each year, calculate what proportion of babies named Brigham were born in Idaho and Utah? Make a graph displaying the proportion over time.\n\nFirst we filter out the name brigam and calculate it’s percent, and then we plot out the names popularity throughout the years. We can see a gaint spike down in the year 1992\n\n\nShow the code\n# Q2\n\nbrig = df.filter(pl.col(\"name\") == \"Brigham\")\nstates_percent = brig.with_columns(\n  ((pl.col(\"UT\") + pl.col(\"ID\"))/pl.col(\"Total\")).alias(\"percent\")\n)\n\n(\n  ggplot(states_percent, aes(x=\"year\", y=\"percent\"))\n  +scale_x_continuous(format=\"d\")\n  +geom_line(color=\"blue\", size =1)\n  +labs(\n    title=\"Name in Brigham born in Idaho and Utah percent\",\n    x=\"Year\",\n    y=\"Percent\"\n  )\n)",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html#question-3",
+    "href": "Cleansing_Projects/project2.html#question-3",
+    "title": "Client Report - Famous Names",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\n\nConsider doing some data validation. For the name David, calculate a sum of all 50 states and District of Columbia for each year. Now compare that total to the value in the ‘Total’ column. In which years, if any, do they not agree?\n\nFirst we filter out the name David, then we total the states. which would be to add all the columns excluding the name, year, and total columns. saving this total as a new column called state_sum. then we find where our calculation doesn’t match the total calculation\n\n\nShow the code\n# Q3\ndavid = df.filter(pl.col(\"name\") == \"David\")\n\nsum = david.with_columns(\n    pl.sum_horizontal(pl.exclude(\"name\", \"year\", \"Total\")).alias(\"state_sum\")\n)\n\nnot_match = sum.filter(pl.col(\"state_sum\") != pl.col(\"Total\"))\n\nif not_match.height &gt; 0:\n  print(\"the years where they don'y agree:\")\n  print(not_match.select(\"year\", \"state_sum\", \"Total\"))\nelse:\n  print(\"They all match!\")\n\n\nThey all match!",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Competition/HackUSU.html",
+    "href": "Competition/HackUSU.html",
+    "title": "HackUSU Project",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "The Project details\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport requests #new for reading in JSON\nimport io       #new for reading in JSON\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nurl = \"https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json\"\nresponse = requests.get(url)\ndf = pl.read_json(io.BytesIO(response.content))\ndf\n\n\n\nshape: (924, 17)\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\nstr\nstr\nstr\ni64\ni64\nstr\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n\"ATL\"\n\"Atlanta, GA: Hartsfield-Jackso…\n\"January\"\n2005\n35048\n\"1500+\"\n-999\n4598\n10\n448\n8355\n116423\n104415\n207467\n297\n36931\n465533\n\n\n\"DEN\"\n\"Denver, CO: Denver Internation…\n\"January\"\n2005\n12687\n\"1041\"\n928\n935\n11\n233\n3153\n53537\n70301\n36817\n363\n21779\n182797\n\n\n\"IAD\"\n\"\"\n\"January\"\n2005\n12381\n\"414\"\n1058\n895\n4\n61\n2430\nnull\n70919\n35660\n208\n4497\n134881\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"January\"\n2005\n28194\n\"1197\"\n2255\n5415\n5\n306\n9178\n88691\n160811\n364382\n151\n24859\n638894\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"January\"\n2005\n7283\n\"572\"\n680\n638\n7\n56\n1952\n27436\n38445\n21127\n218\n4326\n91552\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"IAD\"\n\"Washington, DC: Washington Dul…\n\"December\"\n2015\n2799\n\"182\"\n183\n61\n0\n17\n443\nnull\n15438\n2826\n0\n1825\n31164\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"December\"\n2015\n25568\n\"923\"\n1755\n1364\n11\n180\n4233\n80962\n132055\n72045\n435\n22459\n307956\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"n/a\"\n2015\n6231\n\"480\"\n606\n256\n5\n37\n1383\n25402\n35796\n9038\n161\n2742\n73139\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"December\"\n2015\n13833\n\"757\"\n1180\n2372\n9\n147\n4465\n55283\n96703\n193525\n285\n13788\n359584\n\n\n\"SLC\"\n\"Salt Lake City, UT: Salt Lake …\n\"December\"\n2015\n8804\n\"483\"\n796\n404\n5\n56\n1745\n37354\n49549\n13515\n158\n6693\n107269",
     "crumbs": [
       "Data Exploration",
-      "Project 3"
+      "Project 2"
     ]
   },
   {
-    "objectID": "Cleansing_Exploration/project1.html",
-    "href": "Cleansing_Exploration/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "objectID": "Cleansing_Exploration/project2.html#question-1",
+    "href": "Cleansing_Exploration/project2.html#question-1",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nCreate a new ‘season’ column. Define ‘season’ as:\n\nWinter for January, Febuary (note the mispelling), March\nSpring for April, May, June\nSummer for July, August, September\nFall for October, November, December\nAll other rows can be assigned a value of ‘Unknown’\n\n\nNo discussion needed for this question\n\n\nShow the code\n# Include and execute your code here\nseasons = df.with_columns(\n  seasons = pl.when(pl.col('month').is_in(['January','Febuary','March']))\n    .then(pl.lit('Winter'))\n    .when(pl.col('month').is_in(['April','May','June']))\n    .then(pl.lit('Spring'))\n    .when(pl.col('month').is_in(['July','August','September']))\n    .then(pl.lit('Summer'))\n    .when(pl.col('month').is_in(['October','November','December']))\n    .then(pl.lit('Fall'))\n    .otherwise(pl.lit('Unknown'))\n)\nseasons\n\n\n\nshape: (924, 18)\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\nseasons\n\n\nstr\nstr\nstr\ni64\ni64\nstr\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\nstr\n\n\n\n\n\"ATL\"\n\"Atlanta, GA: Hartsfield-Jackso…\n\"January\"\n2005\n35048\n\"1500+\"\n-999\n4598\n10\n448\n8355\n116423\n104415\n207467\n297\n36931\n465533\n\"Winter\"\n\n\n\"DEN\"\n\"Denver, CO: Denver Internation…\n\"January\"\n2005\n12687\n\"1041\"\n928\n935\n11\n233\n3153\n53537\n70301\n36817\n363\n21779\n182797\n\"Winter\"\n\n\n\"IAD\"\n\"\"\n\"January\"\n2005\n12381\n\"414\"\n1058\n895\n4\n61\n2430\nnull\n70919\n35660\n208\n4497\n134881\n\"Winter\"\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"January\"\n2005\n28194\n\"1197\"\n2255\n5415\n5\n306\n9178\n88691\n160811\n364382\n151\n24859\n638894\n\"Winter\"\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"January\"\n2005\n7283\n\"572\"\n680\n638\n7\n56\n1952\n27436\n38445\n21127\n218\n4326\n91552\n\"Winter\"\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"IAD\"\n\"Washington, DC: Washington Dul…\n\"December\"\n2015\n2799\n\"182\"\n183\n61\n0\n17\n443\nnull\n15438\n2826\n0\n1825\n31164\n\"Fall\"\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"December\"\n2015\n25568\n\"923\"\n1755\n1364\n11\n180\n4233\n80962\n132055\n72045\n435\n22459\n307956\n\"Fall\"\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"n/a\"\n2015\n6231\n\"480\"\n606\n256\n5\n37\n1383\n25402\n35796\n9038\n161\n2742\n73139\n\"Unknown\"\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"December\"\n2015\n13833\n\"757\"\n1180\n2372\n9\n147\n4465\n55283\n96703\n193525\n285\n13788\n359584\n\"Fall\"\n\n\n\"SLC\"\n\"Salt Lake City, UT: Salt Lake …\n\"December\"\n2015\n8804\n\"483\"\n796\n404\n5\n56\n1745\n37354\n49549\n13515\n158\n6693\n107269\n\"Fall\"",
     "crumbs": [
       "Data Exploration",
-      "Project 1"
+      "Project 2"
     ]
   },
   {
-    "objectID": "ml.html",
-    "href": "ml.html",
-    "title": "Machine Learning",
+    "objectID": "Cleansing_Exploration/project2.html#question-2",
+    "href": "Cleansing_Exploration/project2.html#question-2",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nDivide all the columns by 1000 whose name starts with num_of. Be sure to first filter out rows that contain problematic values for the columns like -999 or 1500+.\n\nNo discussion needed for this question\n\n\nShow the code\n# Include and execute your code here\ndf_clean = (\n    seasons.with_columns(\n        pl.col(\"^num_of.*$\")\n        .cast(pl.String)               # ensure string can use string or utf8\n        .str.replace(r\"\\+\", \"\")        # remove + \n        .cast(pl.Float64)              # back to number\n    )\n    .filter(\n        pl.all_horizontal(\n            (pl.col(\"^num_of.*$\") != 999) &\n            (pl.col(\"^num_of.*$\") != 1500)\n        )\n    )\n    .with_columns(\n        (pl.col(\"^num_of.*$\") / 1000)\n    )\n)\ndf_clean\n\n\n\nshape: (850, 18)\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\nseasons\n\n\nstr\nstr\nstr\ni64\nf64\nf64\nf64\nf64\nf64\nf64\nf64\ni64\ni64\ni64\ni64\ni64\ni64\nstr\n\n\n\n\n\"DEN\"\n\"Denver, CO: Denver Internation…\n\"January\"\n2005\n12.687\n1.041\n0.928\n0.935\n0.011\n0.233\n3.153\n53537\n70301\n36817\n363\n21779\n182797\n\"Winter\"\n\n\n\"IAD\"\n\"\"\n\"January\"\n2005\n12.381\n0.414\n1.058\n0.895\n0.004\n0.061\n2.43\nnull\n70919\n35660\n208\n4497\n134881\n\"Winter\"\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"January\"\n2005\n28.194\n1.197\n2.255\n5.415\n0.005\n0.306\n9.178\n88691\n160811\n364382\n151\n24859\n638894\n\"Winter\"\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"January\"\n2005\n7.283\n0.572\n0.68\n0.638\n0.007\n0.056\n1.952\n27436\n38445\n21127\n218\n4326\n91552\n\"Winter\"\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"January\"\n2005\n10.274\n0.798\n0.733\n1.166\n0.007\n0.114\n2.816\n41570\n47705\n60380\n247\n7373\n157275\n\"Winter\"\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"IAD\"\n\"Washington, DC: Washington Dul…\n\"December\"\n2015\n2.799\n0.182\n0.183\n0.061\n0.0\n0.017\n0.443\nnull\n15438\n2826\n0\n1825\n31164\n\"Fall\"\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"December\"\n2015\n25.568\n0.923\n1.755\n1.364\n0.011\n0.18\n4.233\n80962\n132055\n72045\n435\n22459\n307956\n\"Fall\"\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"n/a\"\n2015\n6.231\n0.48\n0.606\n0.256\n0.005\n0.037\n1.383\n25402\n35796\n9038\n161\n2742\n73139\n\"Unknown\"\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"December\"\n2015\n13.833\n0.757\n1.18\n2.372\n0.009\n0.147\n4.465\n55283\n96703\n193525\n285\n13788\n359584\n\"Fall\"\n\n\n\"SLC\"\n\"Salt Lake City, UT: Salt Lake …\n\"December\"\n2015\n8.804\n0.483\n0.796\n0.404\n0.005\n0.056\n1.745\n37354\n49549\n13515\n158\n6693\n107269\n\"Fall\"\n\n\n\n\n\n\n\n.with_columns : which updates/adds columns ^ .* $ : WHich is a regular expression , period star means zero to many",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html#question-3",
+    "href": "Cleansing_Exploration/project2.html#question-3",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\n\nAccording to the BTS website, the “Weather” category only accounts for severe weather delays. Mild weather delays are not counted in the “Weather” category, but are actually included in both the “nas” and “late_aircraft” categories. Using the columns you modified in the bullet above, your job is to create a new column that calculates the total number of flights (in 1,000’s) delayed by weather (both severe and mild). Show your work by printing the first 5 rows of the dataset. Use these three rules for your calculations:\n\n100% of delayed flights in the Weather category are due to weather\nnum_of_delays_weather\n30% of all delayed flights in the “late_aircraft” category are due to weather\nnum_of_delays_late_aircraft\nFrom April through August, 40% of delayed flights in the NAS category are due to weather. The rest of the months, the proportion rises to 65%\nnum_of_delays_nas April–August → 40% All other months → 65%\n\n\nNo discussion needed for this question\n\n\nShow the code\n# Include and execute your code here\n# weather_total =\n#     num_of_delays_weather\n#   + 0.30 * num_of_delays_late_aircraft\n#   + NAS_factor * num_of_delays_nas\n\ndelays = df_clean.with_columns(\n  Delay_Calculation = pl.col('num_of_delays_weather') \n    + (pl.col('num_of_delays_late_aircraft') * 0.30) \n    +( pl.when(pl.col('month').is_in(['April', 'May', 'June', 'July', 'August']))\n      .then(0.40 * pl.col('num_of_delays_nas'))\n      .otherwise(0.65 * pl.col('num_of_delays_nas'))\n    )\n)\n\ndelays.head(5)\n\n\n\nshape: (5, 19)\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\nseasons\nDelay_Calculation\n\n\nstr\nstr\nstr\ni64\nf64\nf64\nf64\nf64\nf64\nf64\nf64\ni64\ni64\ni64\ni64\ni64\ni64\nstr\nf64\n\n\n\n\n\"DEN\"\n\"Denver, CO: Denver Internation…\n\"January\"\n2005\n12.687\n1.041\n0.928\n0.935\n0.011\n0.233\n3.153\n53537\n70301\n36817\n363\n21779\n182797\n\"Winter\"\n1.11915\n\n\n\"IAD\"\n\"\"\n\"January\"\n2005\n12.381\n0.414\n1.058\n0.895\n0.004\n0.061\n2.43\nnull\n70919\n35660\n208\n4497\n134881\n\"Winter\"\n0.96015\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"January\"\n2005\n28.194\n1.197\n2.255\n5.415\n0.005\n0.306\n9.178\n88691\n160811\n364382\n151\n24859\n638894\n\"Winter\"\n4.50225\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"January\"\n2005\n7.283\n0.572\n0.68\n0.638\n0.007\n0.056\n1.952\n27436\n38445\n21127\n218\n4326\n91552\n\"Winter\"\n0.6747\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"January\"\n2005\n10.274\n0.798\n0.733\n1.166\n0.007\n0.114\n2.816\n41570\n47705\n60380\n247\n7373\n157275\n\"Winter\"\n1.0918",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html#question-4",
+    "href": "Cleansing_Exploration/project2.html#question-4",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "QUESTION 4",
+    "text": "QUESTION 4\n\nUsing the new weather variable calculated above, create a boxplot showing the distribution of flights delayed by weather for each season. Describe what you learn from this graph.\n\nThis is using the boxplot method to show the correlation between the seasons and delayed flights using the previous calculations made above\n\n\nShow the code\n# Include and execute your code here\n(\n  ggplot(delays, aes(x='seasons', y='Delay_Calculation', fill='seasons'))\n  +geom_boxplot()\n  +labs(\n    title = \"Correlation between weather and flights\"\n  )\n  +flavor_darcula()\n\n)",
+    "crumbs": [
+      "Data Exploration",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "story_telling.html",
+    "href": "story_telling.html",
+    "title": "Data Storytelling",
     "section": "",
-    "text": "Machine Learning allows us to uncover patterns, make predictions, and optimize solutions using data. In these projects, I build models that provide actionable insights and demonstrate real-world impact.",
+    "text": "Data storytelling combines analysis and communication to turn data into meaningful narratives. In these projects, I focus on presenting insights clearly through visualizations and structured storytelling to support decision-making.",
     "crumbs": [
-      "Machine Learning"
+      "Story Telling"
     ]
   },
   {
-    "objectID": "ml.html#my-approach-to-machine-learning",
-    "href": "ml.html#my-approach-to-machine-learning",
-    "title": "Machine Learning",
-    "section": "My Approach to Machine Learning",
-    "text": "My Approach to Machine Learning\n\nData preprocessing and feature engineering\n\nSupervised and unsupervised learning\n\nModel evaluation, validation, and tuning\n\nUsing Python libraries: scikit-learn, Pandas, NumPy\n\nVisualizing results to communicate model performance",
+    "objectID": "story_telling.html#my-approach-to-data-storytelling",
+    "href": "story_telling.html#my-approach-to-data-storytelling",
+    "title": "Data Storytelling",
+    "section": "My Approach to Data Storytelling",
+    "text": "My Approach to Data Storytelling\n\nFraming problems in a real-world context\nUsing visuals to highlight key insights\nSimplifying complex data into clear messages\nStructuring analysis as a narrative\nProviding actionable recommendations",
     "crumbs": [
-      "Machine Learning"
+      "Story Telling"
     ]
   },
   {
-    "objectID": "ml.html#projects",
-    "href": "ml.html#projects",
-    "title": "Machine Learning",
+    "objectID": "story_telling.html#projects",
+    "href": "story_telling.html#projects",
+    "title": "Data Storytelling",
     "section": "Projects",
-    "text": "Projects\nOverview\nWhat I Did:\n- Engineered key features\n- Trained regression models\n- Evaluated model performance\nTools:\nPython, scikit-learn, NumPy\n[You can view the full project on the sidebar to your left]",
+    "text": "Projects\nOverview\nAnalyzed data to tell a clear, actionable story.\nWhat I Did:\n- Explored trends and patterns in the dataset\n- Highlighted key insights visually\n- Summarized findings into a clear narrative\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
     "crumbs": [
-      "Machine Learning"
+      "Story Telling"
     ]
   },
   {
-    "objectID": "Machine_Learning/project3.html",
-    "href": "Machine_Learning/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Journey in Data Science Programming",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
+  },
+  {
+    "objectID": "index.html#ash-uchida",
+    "href": "index.html#ash-uchida",
+    "title": "My Journey in Data Science Programming",
+    "section": "",
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
+  },
+  {
+    "objectID": "index.html#featured-work",
+    "href": "index.html#featured-work",
+    "title": "My Journey in Data Science Programming",
+    "section": "Featured Work",
+    "text": "Featured Work\n\nHackathon Winner (2nd Place)\nBuilt a secure analytics platform that converts natural language into validated SQL using AI and Databricks, enabling users to safely query data without writing SQL.\n\n\nZoom Zone\nDeveloped a full-stack scheduling platform integrating Google Calendar and Zoom APIs, allowing users to automate meeting creation and avoid scheduling conflicts."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "My Journey in Data Science Programming",
+    "section": "About Me",
+    "text": "About Me\nI’m a Computer Science student with a passion for building applications and working with data. I enjoy creating full-stack projects, exploring machine learning, and solving real-world problems.\nOutside of tech, I enjoy snowboarding, painting murals, and staying active outdoors."
+  },
+  {
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - Show me!",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import metrics\nimport requests\nimport io\nimport polars.selectors as cs\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# import your data here using polars and the URL\nurl = \"https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv\"\n\nresponse = requests.get(url)\n\ndf = pl.read_csv(io.BytesIO(response.content))\ndf\n\n\n\nshape: (22_913, 51)\n\n\n\nparcel\nabstrprd\nlivearea\nfinbsmnt\nbasement\nyrbuilt\ntotunits\nstories\nnocars\nnumbdrm\nnumbaths\nsprice\ndeduct\nnetprice\ntasp\nsmonth\nsyear\ncondition_AVG\ncondition_Excel\ncondition_Fair\ncondition_Good\ncondition_VGood\nquality_A\nquality_B\nquality_C\nquality_D\nquality_X\ngartype_Att\ngartype_Att/Det\ngartype_CP\ngartype_Det\ngartype_None\ngartype_att/CP\ngartype_det/CP\narcstyle_BI-LEVEL\narcstyle_CONVERSIONS\narcstyle_END UNIT\narcstyle_MIDDLE UNIT\narcstyle_ONE AND HALF-STORY\narcstyle_ONE-STORY\narcstyle_SPLIT LEVEL\narcstyle_THREE-STORY\narcstyle_TRI-LEVEL\narcstyle_TRI-LEVEL WITH BASEMENT\narcstyle_TWO AND HALF-STORY\narcstyle_TWO-STORY\nqualified_Q\nqualified_U\nstatus_I\nstatus_V\nbefore1980\n\n\nstr\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n\"00102-08-065-065\"\n1130\n1346\n0\n0\n2004\n1\n2\n2\n2\n2\n100000\n0\n100000\n100000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-073-073\"\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n94700\n0\n94700\n94700\n4\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-078-078\"\n1130\n1346\n0\n0\n2005\n1\n2\n1\n2\n2\n89500\n0\n89500\n89500\n10\n2010\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-081-081\"\n1130\n1146\n0\n0\n2005\n1\n1\n0\n2\n2\n92000\n3220\n88780\n88780\n10\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-086-086\"\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n74199\n0\n74199\n74199\n3\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"09154-01-132-132\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n128000\n0\n128000\n128000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"09154-01-133-133\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n121500\n0\n121500\n121500\n11\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"09154-01-133-133\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n\"09154-01-134-134\"\n1130\n1219\n0\n0\n1998\n1\n1\n0\n3\n2\n116150\n0\n116150\n116150\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n\"09154-01-137-137\"\n1130\n1041\n0\n0\n1998\n1\n1\n0\n2\n2\n130000\n1000\n129000\n129000\n5\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0",
     "crumbs": [
       "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html#question-1",
+    "href": "Machine_Learning/project2.html#question-1",
+    "title": "Client Report - Show me!",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nRepeat the classification exercise using 2 different algorithms/models. Explain the differences between the 3 models (your original one, and the 2 new ones for this task).\n\nwe just need to repeat the proceess for the 3 different classifiers\n\n\nShow the code\nx = df.select((cs.numeric()).exclude([\"before1980\",\"yrbuilt\"]))\ny = df.select('before1980')\n\n\n\n\nShow the code\n# Include and execute your code here\n# Don't forget, you need another import statement to import the desired ML model from sklearn\nfrom sklearn.model_selection import train_test_split\n\nx_train, x_test, y_train, y_test = train_test_split(x,y, random_state=12394, train_size=.8)\n\n\n\n\nShow the code\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.neighbors import KNeighborsClassifier\n\n# Use .to_series() to flatten the target column without manual numpy calls\ny_train_series = y_train.to_series()\n\ntree_classifier = DecisionTreeClassifier()\ntree_classifier.fit(x_train, y_train_series)\n\nforest_classifier = RandomForestClassifier()\nforest_classifier.fit(x_train, y_train_series)\n\nknee_classifier = KNeighborsClassifier()\nknee_classifier.fit(x_train, y_train_series)\n\n\nKNeighborsClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.KNeighborsClassifier?Documentation for KNeighborsClassifieriFitted\n        \n            \n                Parameters\n                \n\n\n\n\n\n\n\n\n\nn_neighbors n_neighbors: int, default=5\n\nNumber of neighbors to use by default for :meth:`kneighbors` queries.\n5\n\n\n\nweights weights: {'uniform', 'distance'}, callable or None, default='uniform'\n\nWeight function used in prediction. Possible values:\n\n- 'uniform' : uniform weights. All points in each neighborhood\nare weighted equally.\n- 'distance' : weight points by the inverse of their distance.\nin this case, closer neighbors of a query point will have a\ngreater influence than neighbors which are further away.\n- [callable] : a user-defined function which accepts an\narray of distances, and returns an array of the same shape\ncontaining the weights.\n\nRefer to the example entitled\n:ref:`sphx_glr_auto_examples_neighbors_plot_classification.py`\nshowing the impact of the `weights` parameter on the decision\nboundary.\n'uniform'\n\n\n\nalgorithm algorithm: {'auto', 'ball_tree', 'kd_tree', 'brute'}, default='auto'\n\nAlgorithm used to compute the nearest neighbors:\n\n- 'ball_tree' will use :class:`BallTree`\n- 'kd_tree' will use :class:`KDTree`\n- 'brute' will use a brute-force search.\n- 'auto' will attempt to decide the most appropriate algorithm\nbased on the values passed to :meth:`fit` method.\n\nNote: fitting on sparse input will override the setting of\nthis parameter, using brute force.\n'auto'\n\n\n\nleaf_size leaf_size: int, default=30\n\nLeaf size passed to BallTree or KDTree. This can affect the\nspeed of the construction and query, as well as the memory\nrequired to store the tree. The optimal value depends on the\nnature of the problem.\n30\n\n\n\np p: float, default=2\n\nPower parameter for the Minkowski metric. When p = 1, this is equivalent\nto using manhattan_distance (l1), and euclidean_distance (l2) for p = 2.\nFor arbitrary p, minkowski_distance (l_p) is used. This parameter is expected\nto be positive.\n2\n\n\n\nmetric metric: str or callable, default='minkowski'\n\nMetric to use for distance computation. Default is \"minkowski\", which\nresults in the standard Euclidean distance when p = 2. See the\ndocumentation of `scipy.spatial.distance\n&lt; docs.scipy.org doc scipy reference spatial.distance.html&gt;`_ and\nthe metrics listed in\n:class:`~sklearn.metrics.pairwise.distance_metrics` for valid metric\nvalues.\n\nIf metric is \"precomputed\", X is assumed to be a distance matrix and\nmust be square during fit. X may be a :term:`sparse graph`, in which\ncase only \"nonzero\" elements may be considered neighbors.\n\nIf metric is a callable function, it takes two arrays representing 1D\nvectors as inputs and must return one value indicating the distance\nbetween those vectors. This works for Scipy's metrics, but is less\nefficient than passing the metric name as a string.\n'minkowski'\n\n\n\nmetric_params metric_params: dict, default=None\n\nAdditional keyword arguments for the metric function.\nNone\n\n\n\nn_jobs n_jobs: int, default=None\n\nThe number of parallel jobs to run for neighbors search.\n``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.\n``-1`` means using all processors. See :term:`Glossary `\nfor more details.\nDoesn't affect :meth:`fit` method.\nNone\n\n\n\n\n            \n        \n    \n\n\n\n\nShow the code\nfrom sklearn.metrics import classification_report\n\ny_pred = tree_classifier.predict(x_test)\ny_pred2 = forest_classifier.predict(x_test)\ny_pred3 = knee_classifier.predict(x_test)\n\nprint(classification_report(y_test, y_pred))\nprint(classification_report(y_test, y_pred2))\nprint(classification_report(y_test, y_pred3))\n\n\n              precision    recall  f1-score   support\n\n           0       0.86      0.87      0.86      1690\n           1       0.92      0.91      0.92      2893\n\n    accuracy                           0.90      4583\n   macro avg       0.89      0.89      0.89      4583\nweighted avg       0.90      0.90      0.90      4583\n\n              precision    recall  f1-score   support\n\n           0       0.90      0.90      0.90      1690\n           1       0.94      0.94      0.94      2893\n\n    accuracy                           0.93      4583\n   macro avg       0.92      0.92      0.92      4583\nweighted avg       0.93      0.93      0.93      4583\n\n              precision    recall  f1-score   support\n\n           0       0.61      0.52      0.56      1690\n           1       0.74      0.80      0.77      2893\n\n    accuracy                           0.70      4583\n   macro avg       0.67      0.66      0.66      4583\nweighted avg       0.69      0.70      0.69      4583",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html#question-2",
+    "href": "Machine_Learning/project2.html#question-2",
+    "title": "Client Report - Show me!",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nFor each model (your original one, and the 2 new ones for this task), display the classification report and the permutation importances for the most important features. Discuss which model you would recommend to the Client and why.\n\nTo do this I created 3 tables for the 3 different model used: desicon tree, random forest and kneigbors. After looking and comparing them the most important feautures our clients should focus on are: num_baths, gartype_att, stories, arcstyle_ONE-STORY, livearea, netprice\n\n\nShow the code\n# Include and execute your code here\nfrom sklearn.inspection import permutation_importance\n\ntree_importance = permutation_importance(tree_classifier, x_test, y_test, n_repeats=2, random_state=107)\nforest_importance = permutation_importance(forest_classifier, x_test, y_test, n_repeats=2, random_state=103)\nknee_importance = permutation_importance(knee_classifier, x_test, y_test, n_repeats=1, random_state=123)\n\n\n\n\nShow the code\nfeature_names = x.columns\n\n#  Create the Polars DataFrame for plotting\nimportance_tree = pl.DataFrame({\n    'vars': feature_names,\n    'importance': tree_importance.importances_mean,\n    'model': 'Decision Tree'\n}).sort('importance', descending=True)\n\n\nimportance_tree.head(10)\n\n\n\nshape: (10, 3)\n\n\n\nvars\nimportance\nmodel\n\n\nstr\nf64\nstr\n\n\n\n\n\"arcstyle_ONE-STORY\"\n0.11619\n\"Decision Tree\"\n\n\n\"numbaths\"\n0.09568\n\"Decision Tree\"\n\n\n\"gartype_Att\"\n0.082697\n\"Decision Tree\"\n\n\n\"stories\"\n0.07506\n\"Decision Tree\"\n\n\n\"abstrprd\"\n0.072333\n\"Decision Tree\"\n\n\n\"livearea\"\n0.061423\n\"Decision Tree\"\n\n\n\"sprice\"\n0.053677\n\"Decision Tree\"\n\n\n\"basement\"\n0.05204\n\"Decision Tree\"\n\n\n\"quality_C\"\n0.043967\n\"Decision Tree\"\n\n\n\"tasp\"\n0.036548\n\"Decision Tree\"\n\n\n\n\n\n\n\n\nShow the code\nimportance_forest = pl.DataFrame({\n    'vars': feature_names,\n    'importance': forest_importance.importances_mean,\n    'model': 'Random Forest'\n}).sort('importance', descending=True)\n\nimportance_forest.head(10)\n\n\n\nshape: (10, 3)\n\n\n\nvars\nimportance\nmodel\n\n\nstr\nf64\nstr\n\n\n\n\n\"gartype_Att\"\n0.034148\n\"Random Forest\"\n\n\n\"numbaths\"\n0.024875\n\"Random Forest\"\n\n\n\"arcstyle_ONE-STORY\"\n0.022147\n\"Random Forest\"\n\n\n\"abstrprd\"\n0.021274\n\"Random Forest\"\n\n\n\"livearea\"\n0.02062\n\"Random Forest\"\n\n\n\"stories\"\n0.015492\n\"Random Forest\"\n\n\n\"basement\"\n0.015383\n\"Random Forest\"\n\n\n\"quality_C\"\n0.013419\n\"Random Forest\"\n\n\n\"numbdrm\"\n0.010255\n\"Random Forest\"\n\n\n\"nocars\"\n0.00851\n\"Random Forest\"\n\n\n\n\n\n\n\n\nShow the code\nimportance_knee = pl.DataFrame({\n    'vars': feature_names,\n    'importance': knee_importance.importances_mean,\n    'model': 'K-Nearest Neighbors'\n}).sort('importance', descending=True)\n\nimportance_knee.head(10)\n\n\n\nshape: (10, 3)\n\n\n\nvars\nimportance\nmodel\n\n\nstr\nf64\nstr\n\n\n\n\n\"sprice\"\n0.09928\n\"K-Nearest Neighbors\"\n\n\n\"netprice\"\n0.096662\n\"K-Nearest Neighbors\"\n\n\n\"tasp\"\n0.096225\n\"K-Nearest Neighbors\"\n\n\n\"livearea\"\n0.032293\n\"K-Nearest Neighbors\"\n\n\n\"deduct\"\n0.020511\n\"K-Nearest Neighbors\"\n\n\n\"basement\"\n0.015274\n\"K-Nearest Neighbors\"\n\n\n\"finbsmnt\"\n0.006982\n\"K-Nearest Neighbors\"\n\n\n\"totunits\"\n0.0\n\"K-Nearest Neighbors\"\n\n\n\"stories\"\n0.0\n\"K-Nearest Neighbors\"\n\n\n\"nocars\"\n0.0\n\"K-Nearest Neighbors\"",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "Data Cleansing",
+    "section": "",
+    "text": "Raw data is rarely usable in its original form. In these projects, I focus on identifying inconsistencies, handling missing values, and transforming messy datasets into clean, reliable data ready for analysis.",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#my-approach-to-data-cleaning",
+    "href": "cleansing.html#my-approach-to-data-cleaning",
+    "title": "Data Cleansing",
+    "section": "My Approach to Data Cleaning",
+    "text": "My Approach to Data Cleaning\n\nHandling missing values (removal, imputation)\nStandardizing formats (dates, text, categories)\nRemoving duplicates and inconsistencies\nValidating data integrity\nPreparing data for analysis and modeling",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#my-projects",
+    "href": "cleansing.html#my-projects",
+    "title": "Data Cleansing",
+    "section": "My Projects",
+    "text": "My Projects\nOverview What I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Projects on the side bar to your left]",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "exploration.html",
+    "href": "exploration.html",
+    "title": "Data Exploration",
+    "section": "",
+    "text": "Data exploration is the process of analyzing datasets to uncover patterns, trends, and insights. In these projects, I use statistical analysis and visualization to better understand data and support data-driven decisions.",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#my-approach-to-data-exploration",
+    "href": "exploration.html#my-approach-to-data-exploration",
+    "title": "Data Exploration",
+    "section": "My Approach to Data Exploration",
+    "text": "My Approach to Data Exploration\n\nIdentifying trends and patterns in data\nUsing visualizations to communicate insights\nAnalyzing distributions and relationships\nDetecting outliers and anomalies\nGenerating questions and hypotheses from data",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#my-projects",
+    "href": "exploration.html#my-projects",
+    "title": "Data Exploration",
+    "section": "My Projects",
+    "text": "My Projects",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#projects",
+    "href": "exploration.html#projects",
+    "title": "Data Exploration",
+    "section": "Projects",
+    "text": "Projects\nOverview\nWhat I Did:\n- Calculated summary statistics\n- Plotted distributions and correlations\n- Filtered and grouped data for insights\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
+    "title": "Client Report - Baseball Database SQL Query",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html#question-1",
+    "href": "Story_Telling/project2.html#question-1",
+    "title": "Client Report - Baseball Database SQL Query",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWrite an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.\nThese first 2 tables just helps me see what’s inside my database\n\n\nShow the code\n# Query to see all tables\ntables_query = \"SELECT name FROM sqlite_master WHERE type='table';\"\ntables = pl.read_database(tables_query, con)\nprint(tables)\n\n\nshape: (29, 1)\n┌─────────────────────┐\n│ name                │\n│ ---                 │\n│ str                 │\n╞═════════════════════╡\n│ allstarfull         │\n│ appearances         │\n│ awardsmanagers      │\n│ awardsplayers       │\n│ awardssharemanagers │\n│ …                   │\n│ schools             │\n│ seriespost          │\n│ teams               │\n│ teamsfranchises     │\n│ teamshalf           │\n└─────────────────────┘\n\n\n\n\nShow the code\n# Check the column names for the batting table\ncheck_cols = \"PRAGMA table_info('batting');\"\nprint(pl.read_database(check_cols, con))\n\n\nshape: (25, 6)\n┌─────┬──────────┬──────────────┬─────────┬────────────┬─────┐\n│ cid ┆ name     ┆ type         ┆ notnull ┆ dflt_value ┆ pk  │\n│ --- ┆ ---      ┆ ---          ┆ ---     ┆ ---        ┆ --- │\n│ i64 ┆ str      ┆ str          ┆ i64     ┆ null       ┆ i64 │\n╞═════╪══════════╪══════════════╪═════════╪════════════╪═════╡\n│ 0   ┆ ID       ┆ INTEGER      ┆ 1       ┆ null       ┆ 1   │\n│ 1   ┆ playerID ┆ VARCHAR(9)   ┆ 1       ┆ null       ┆ 0   │\n│ 2   ┆ yearID   ┆ SMALLINT     ┆ 1       ┆ null       ┆ 0   │\n│ 3   ┆ stint    ┆ SMALLINT     ┆ 1       ┆ null       ┆ 0   │\n│ 4   ┆ teamID   ┆ CHARACTER(3) ┆ 0       ┆ null       ┆ 0   │\n│ …   ┆ …        ┆ …            ┆ …       ┆ …          ┆ …   │\n│ 20  ┆ IBB      ┆ SMALLINT     ┆ 0       ┆ null       ┆ 0   │\n│ 21  ┆ HBP      ┆ SMALLINT     ┆ 0       ┆ null       ┆ 0   │\n│ 22  ┆ SH       ┆ SMALLINT     ┆ 0       ┆ null       ┆ 0   │\n│ 23  ┆ SF       ┆ SMALLINT     ┆ 0       ┆ null       ┆ 0   │\n│ 24  ┆ GIDP     ┆ SMALLINT     ┆ 0       ┆ null       ┆ 0   │\n└─────┴──────────┴──────────────┴─────────┴────────────┴─────┘\n\n\n\n\nShow the code\n# Include and execute your code here\n\n# The code below can serve as a template for all the rest of your queries. It is just missing the\n# SQL code. Put your SQL query in between the triple quotation marks to create the query. The records will be stored in 'results', which is a polars data frame\n\nq = \"\"\"\n  SELECT \n    playerID, \n    yearID, \n    (1.0 * H)/AB AS 'Batting_avg' \n  FROM batting\n  WHERE AB &gt;= 1\n  ORDER BY Batting_avg desc, playerID asc\n  LIMIT 5\n    \"\"\"\nresults = pl.read_database(q, con)\nresults\n\n\n\nshape: (5, 3)\n\n\n\nplayerID\nyearID\nBatting_avg\n\n\nstr\ni64\nf64\n\n\n\n\n\"aberal01\"\n1957\n1.0\n\n\n\"abernte02\"\n1960\n1.0\n\n\n\"abramge01\"\n1923\n1.0\n\n\n\"acklefr01\"\n1964\n1.0\n\n\n\"alanirj01\"\n2019\n1.0",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html#question-2",
+    "href": "Story_Telling/project2.html#question-2",
+    "title": "Client Report - Baseball Database SQL Query",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nUse the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.\nWe just need to the change the num for the where part\n\n\nShow the code\n# Include and execute your code here\nq = \"\"\"\n  SELECT \n    playerID, \n    yearID, \n    (1.0 * H)/AB AS 'Batting_avg' \n  FROM batting\n  WHERE AB &gt;= 10\n  ORDER BY Batting_avg desc, playerID asc\n  LIMIT 5\n    \"\"\"\nresults = pl.read_database(q, con)\nresults\n\n\n\nshape: (5, 3)\n\n\n\nplayerID\nyearID\nBatting_avg\n\n\nstr\ni64\nf64\n\n\n\n\n\"nymanny01\"\n1974\n0.642857\n\n\n\"carsoma01\"\n2013\n0.636364\n\n\n\"altizda01\"\n1910\n0.6\n\n\n\"johnsde01\"\n1975\n0.6\n\n\n\"silvech01\"\n1948\n0.571429",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project2.html#question-3",
+    "href": "Story_Telling/project2.html#question-3",
+    "title": "Client Report - Baseball Database SQL Query",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nNow modify the SQL query to calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats over their entire career, and print the top 5 results.\nFor here we need to make sure that we use having and not where when filtering the AB &gt; 100 when we are lookinng at the sum\n\n\nShow the code\n# Include and execute your code here\n\nq = \"\"\"\n  SELECT \n    playerID, \n    yearID, \n    ROUND((1.0 * SUM(H) / SUM(AB)), 3 ) AS 'Batting_avg' \n  FROM batting\n  GROUP BY playerID\n  HAVING SUM(AB) &gt;= 100\n  ORDER BY Batting_avg desc, playerID asc\n  LIMIT 5\n    \"\"\"\nresults = pl.read_database(q, con)\nresults\n\n\n\nshape: (5, 3)\n\n\n\nplayerID\nyearID\nBatting_avg\n\n\nstr\ni64\nf64\n\n\n\n\n\"cobbty01\"\n1905\n0.366\n\n\n\"barnero01\"\n1871\n0.36\n\n\n\"hornsro01\"\n1915\n0.358\n\n\n\"jacksjo01\"\n1908\n0.356\n\n\n\"meyerle01\"\n1871\n0.356",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
+    "title": "Client Report - Baseball Database",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\ncon = sqlite3.connect(sqlite_file)\nShow the code\n# Include and execute your code here\n\n# The code below uses some basic SQL code to read in the entire 'batting' table in the database and store it in a polars dataframe called 'results'. You must write polars code to manipulate the results dataframe to address the task.\n\nq = \"\"\"\n    SELECT *\n    FROM batting\n    \"\"\"\nresults = pl.read_database(q, con, infer_schema_length=None) \n# What does infer_schema_length = None do?\nresults\n\n\n\nshape: (107_429, 25)\n\n\n\nID\nplayerID\nyearID\nstint\nteamID\nteam_ID\nlgID\nG\nG_batting\nAB\nR\nH\n2B\n3B\nHR\nRBI\nSB\nCS\nBB\nSO\nIBB\nHBP\nSH\nSF\nGIDP\n\n\ni64\nstr\ni64\ni64\nstr\ni64\nstr\ni64\nnull\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n1\n\"abercda01\"\n1871\n1\n\"TRO\"\n8\n\"NA\"\n1\nnull\n4\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\nnull\nnull\nnull\nnull\n0\n\n\n2\n\"addybo01\"\n1871\n1\n\"RC1\"\n7\n\"NA\"\n25\nnull\n118\n30\n32\n6\n0\n0\n13\n8\n1\n4\n0\nnull\nnull\nnull\nnull\n0\n\n\n3\n\"allisar01\"\n1871\n1\n\"CL1\"\n3\n\"NA\"\n29\nnull\n137\n28\n40\n4\n5\n0\n19\n3\n1\n2\n5\nnull\nnull\nnull\nnull\n1\n\n\n4\n\"allisdo01\"\n1871\n1\n\"WS3\"\n9\n\"NA\"\n27\nnull\n133\n28\n44\n10\n2\n2\n27\n1\n1\n0\n2\nnull\nnull\nnull\nnull\n0\n\n\n5\n\"ansonca01\"\n1871\n1\n\"RC1\"\n7\n\"NA\"\n25\nnull\n120\n29\n39\n11\n3\n0\n16\n6\n2\n2\n1\nnull\nnull\nnull\nnull\n0\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n107425\n\"zimmejo02\"\n2019\n1\n\"DET\"\n2905\n\"AL\"\n23\nnull\n2\n0\n0\n0\n0\n0\n0\n0\n0\n0\n2\n0\n0\n0\n0\n0\n\n\n107426\n\"zimmeky01\"\n2019\n1\n\"KCA\"\n2907\n\"AL\"\n15\nnull\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n107427\n\"zimmery01\"\n2019\n1\n\"WAS\"\n2925\n\"NL\"\n52\nnull\n171\n20\n44\n9\n0\n6\n27\n0\n0\n17\n39\n0\n0\n0\n2\n4\n\n\n107428\n\"zobribe01\"\n2019\n1\n\"CHN\"\n2901\n\"NL\"\n47\nnull\n150\n24\n39\n5\n0\n1\n17\n0\n0\n23\n24\n0\n1\n0\n2\n6\n\n\n107429\n\"zuninmi01\"\n2019\n1\n\"TBA\"\n2922\n\"AL\"\n90\nnull\n266\n30\n44\n10\n1\n9\n32\n0\n0\n20\n98\n0\n3\n0\n0\n4",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-1",
+    "href": "Story_Telling/project1.html#question-1",
+    "title": "Client Report - Baseball Database",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nUse the provided code above to read in the batting table. Then, with Python Polars manipulate the ‘results’ dataframe to calculate the number of at bats and the batting average for each year a player played. Filter the data frame to only include players with at least 10 at bats that year. Sort the dataframe from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.\nNote: A batting average is meant to measure how often a player puts the ball in play and gets to base safely. For this task, use a simplified version of batting average defined as the sum of hits (labeled ‘H’) divided by number of at bats (labeled ‘AB’).\nThe top 5 players are: Nyls Wallace Rex, Matthew Reese, David Tilden, Charles Anthony Ryan and George Lawrence \n\n\nShow the code\n# Include and execute your code here\nbest_batting = (\n  results.group_by(['playerID', 'yearID'])\n          .agg(\n            pl.col('AB').sum(),\n            (pl.col('H').sum() / pl.col('AB').sum()).alias('batting_avg')\n          )\n)\nbest_batting.filter(pl.col('AB') &gt;= 10).sort(by=['batting_avg', 'playerID'], descending=[True, False]).head(5)\n\n\n\nshape: (5, 4)\n\n\n\nplayerID\nyearID\nAB\nbatting_avg\n\n\nstr\ni64\ni64\nf64\n\n\n\n\n\"nymanny01\"\n1974\n14\n0.642857\n\n\n\"carsoma01\"\n2013\n11\n0.636364\n\n\n\"altizda01\"\n1910\n10\n0.6\n\n\n\"silvech01\"\n1948\n14\n0.571429\n\n\n\"puccige01\"\n1930\n16\n0.5625\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'nymanny01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"nymanny01\"\n1954\n3\n7\n\"USA\"\n\"MI\"\n\"Detroit\"\nnull\nnull\nnull\nnull\nnull\nnull\n\"Nyls\"\n\"Nyman\"\n\"Nyls Wallace Rex\"\n170\n72\n\"L\"\n\"R\"\n\"1974-09-06\"\n\"1977-04-07\"\n\"nyman101\"\n\"nymanny01\"\n\"1954-03-07\"\n\"1974-09-06\"\n\"1977-04-07\"\nnull\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'carsoma01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"carsoma01\"\n1981\n7\n1\n\"USA\"\n\"CA\"\n\"Newport Beach\"\nnull\nnull\nnull\nnull\nnull\nnull\n\"Matt\"\n\"Carson\"\n\"Matthew Reese\"\n200\n74\n\"R\"\n\"R\"\n\"2009-09-18\"\n\"2013-09-29\"\n\"carsm001\"\n\"carsoma01\"\n\"1981-07-01\"\n\"2009-09-18\"\n\"2013-09-29\"\nnull\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'altizda01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"altizda01\"\n1876\n11\n6\n\"USA\"\n\"IL\"\n\"Pearl\"\n1964\n5\n14\n\"USA\"\n\"IL\"\n\"Pleasant Hill\"\n\"Dave\"\n\"Altizer\"\n\"David Tilden\"\n160\n70\n\"L\"\n\"R\"\n\"1906-05-29\"\n\"1911-07-10\"\n\"altid101\"\n\"altizda01\"\n\"1876-11-06\"\n\"1906-05-29\"\n\"1911-07-10\"\n\"1964-05-14\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'silvech01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"silvech01\"\n1924\n10\n13\n\"USA\"\n\"CA\"\n\"San Francisco\"\n2019\n9\n7\n\"USA\"\n\"CA\"\n\"Millbrae\"\n\"Charlie\"\n\"Silvera\"\n\"Charles Anthony Ryan\"\n175\n70\n\"R\"\n\"R\"\n\"1948-09-29\"\n\"1957-09-28\"\n\"silvc101\"\n\"silvech01\"\n\"1924-10-13\"\n\"1948-09-29\"\n\"1957-09-28\"\n\"2019-09-07\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'puccige01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"puccige01\"\n1907\n6\n22\n\"USA\"\n\"CA\"\n\"San Francisco\"\n1956\n4\n16\n\"USA\"\n\"CA\"\n\"San Francisco\"\n\"George\"\n\"Puccinelli\"\n\"George Lawrence\"\n190\n72\n\"R\"\n\"R\"\n\"1930-07-17\"\n\"1936-09-27\"\n\"puccg101\"\n\"puccige01\"\n\"1907-06-22\"\n\"1930-07-17\"\n\"1936-09-27\"\n\"1956-04-16\"",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html#question-2",
+    "href": "Story_Telling/project1.html#question-2",
+    "title": "Client Report - Baseball Database",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nUse the provided code above to read in the batting table. Then, with Python Polars manipulate the ‘results’ dataframe to calculate the batting average for each player over their entire career (all years combined). Only include players with at least 100 at bats over their entire career. Sort the dataframe from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.\nNote: A batting average is meant to measure how often a player puts the ball in play and gets to base safely. For this task, use a simplified version of batting average defined as the sum of hits (labeled ‘H’) divided by number of at bats (labeled ‘AB’).\nOur top 5 this time are Tyrus Raymond, Charles Roscoe, Rogers Hornsby, Joseph Walker and Levi Samuel \n\n\nShow the code\n# Include and execute your code here\nbest_batting = (\n  results.group_by(['playerID'])\n          .agg(\n            pl.col('AB').sum(),\n            (pl.col('H').sum() / pl.col('AB').sum()).alias('batting_avg')\n          )\n)\nbest_batting.filter(pl.col('AB') &gt;= 100).sort(by=['batting_avg', 'playerID'], descending=[True, False]).head(5)\n\n\n\nshape: (5, 3)\n\n\n\nplayerID\nAB\nbatting_avg\n\n\nstr\ni64\nf64\n\n\n\n\n\"cobbty01\"\n11436\n0.366299\n\n\n\"barnero01\"\n2391\n0.359682\n\n\n\"hornsro01\"\n8173\n0.358497\n\n\n\"jacksjo01\"\n4981\n0.355752\n\n\n\"meyerle01\"\n1443\n0.355509\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'cobbty01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"cobbty01\"\n1886\n12\n18\n\"USA\"\n\"GA\"\n\"Narrows\"\n1961\n7\n17\n\"USA\"\n\"GA\"\n\"Atlanta\"\n\"Ty\"\n\"Cobb\"\n\"Tyrus Raymond\"\n175\n73\n\"L\"\n\"R\"\n\"1905-08-30\"\n\"1928-09-11\"\n\"cobbt101\"\n\"cobbty01\"\n\"1886-12-18\"\n\"1905-08-30\"\n\"1928-09-11\"\n\"1961-07-17\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'barnero01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"barnero01\"\n1850\n5\n8\n\"USA\"\n\"NY\"\n\"Mount Morris\"\n1915\n2\n5\n\"USA\"\n\"IL\"\n\"Chicago\"\n\"Ross\"\n\"Barnes\"\n\"Charles Roscoe\"\n145\n68\n\"R\"\n\"R\"\n\"1871-05-05\"\n\"1881-09-21\"\n\"barnr102\"\n\"barnero01\"\n\"1850-05-08\"\n\"1871-05-05\"\n\"1881-09-21\"\n\"1915-02-05\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'hornsro01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"hornsro01\"\n1896\n4\n27\n\"USA\"\n\"TX\"\n\"Winters\"\n1963\n1\n5\n\"USA\"\n\"IL\"\n\"Chicago\"\n\"Rogers\"\n\"Hornsby\"\n\"Rogers\"\n175\n71\n\"R\"\n\"R\"\n\"1915-09-10\"\n\"1937-07-20\"\n\"hornr101\"\n\"hornsro01\"\n\"1896-04-27\"\n\"1915-09-10\"\n\"1937-07-20\"\n\"1963-01-05\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'jacksjo01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"jacksjo01\"\n1887\n7\n16\n\"USA\"\n\"SC\"\n\"Pickens County\"\n1951\n12\n5\n\"USA\"\n\"SC\"\n\"Greenville\"\n\"Shoeless Joe\"\n\"Jackson\"\n\"Joseph Walker\"\n200\n73\n\"L\"\n\"R\"\n\"1908-08-25\"\n\"1920-09-27\"\n\"jackj101\"\n\"jacksjo01\"\n\"1887-07-16\"\n\"1908-08-25\"\n\"1920-09-27\"\n\"1951-12-05\"\n\n\n\n\n\n\n\n\nShow the code\nq = '''SELECT * from people'''\nplayers = pl.read_database(q, con)\nplayers.filter(pl.col('playerID') == 'meyerle01')\n\n\n\nshape: (1, 28)\n\n\n\nplayerID\nbirthYear\nbirthMonth\nbirthDay\nbirthCountry\nbirthState\nbirthCity\ndeathYear\ndeathMonth\ndeathDay\ndeathCountry\ndeathState\ndeathCity\nnameFirst\nnameLast\nnameGiven\nweight\nheight\nbats\nthrows\ndebut\nfinalGame\nretroID\nbbrefID\nbirth_date\ndebut_date\nfinalgame_date\ndeath_date\n\n\nstr\ni64\ni64\ni64\nstr\nstr\nstr\ni64\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\ni64\ni64\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\nstr\n\n\n\n\n\"meyerle01\"\n1849\n7\nnull\n\"USA\"\n\"PA\"\n\"Philadelphia\"\n1921\n11\n4\n\"USA\"\n\"PA\"\n\"Philadelphia\"\n\"Levi\"\n\"Meyerle\"\n\"Levi Samuel\"\n177\n73\n\"R\"\n\"R\"\n\"1871-05-20\"\n\"1884-04-26\"\n\"meyel102\"\n\"meyerle01\"\nnull\n\"1871-05-20\"\n\"1884-04-26\"\n\"1921-11-04\"",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html",
+    "href": "Story_Telling/project3.html",
+    "title": "Client Report - Joins",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nimport sqlite3\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nsqlite_file = 'lahmansbaseballdb.sqlite'\n# this file must be in the same location as your .qmd or .py file\nconn = sqlite3.connect(sqlite_file)",
+    "crumbs": [
+      "Story Telling",
       "Project 3"
     ]
   },
   {
-    "objectID": "Machine_Learning/project1.html",
-    "href": "Machine_Learning/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "objectID": "Story_Telling/project3.html#question-1",
+    "href": "Story_Telling/project3.html#question-1",
+    "title": "Client Report - Joins",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\nWrite an SQL query that pulls in the the salaries table and the collegeplaying table (and any other tables you might need) and store them in polars dataframes. In Python Polars, combine the dataframes to create a list of baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, yearID and teamID associated with each salary.\nAfter creating this table of data one can see that there is quite a handful of players who originate from BYU-I. But the main trend that I’ve noticed throughout this table is the continually increasing salary after every year regardless of which team the players from.\n\n\nShow the code\nq = ''' SELECT playerID, salary, yearID, teamID FROM salaries '''\nsalaries = pl.read_database(q, conn)\nq = ''' SELECT playerID, schoolID FROM collegeplaying '''\ncollegeplaying = pl.read_database(q, conn).unique()\n\n\n\n\nShow the code\n# Include and execute your code here\ncollegeplaying.join(salaries, \n      on=[\"playerID\"],\n      how=\"inner\").filter(pl.col('schoolID') == 'idbyuid')\n\n\n\nshape: (15, 5)\n\n\n\nplayerID\nschoolID\nsalary\nyearID\nteamID\n\n\nstr\nstr\nf64\ni64\nstr\n\n\n\n\n\"stephga01\"\n\"idbyuid\"\n150000.0\n1997\n\"PHI\"\n\n\n\"stephga01\"\n\"idbyuid\"\n185000.0\n1998\n\"PHI\"\n\n\n\"stephga01\"\n\"idbyuid\"\n215000.0\n1999\n\"SLN\"\n\n\n\"stephga01\"\n\"idbyuid\"\n550000.0\n2000\n\"SLN\"\n\n\n\"stephga01\"\n\"idbyuid\"\n1.025e6\n2001\n\"SLN\"\n\n\n…\n…\n…\n…\n…\n\n\n\"lindsma01\"\n\"idbyuid\"\n1.625e6\n2010\n\"HOU\"\n\n\n\"lindsma01\"\n\"idbyuid\"\n2.8e6\n2011\n\"COL\"\n\n\n\"lindsma01\"\n\"idbyuid\"\n3.6e6\n2012\n\"BAL\"\n\n\n\"lindsma01\"\n\"idbyuid\"\n2.3e6\n2013\n\"CHA\"\n\n\n\"lindsma01\"\n\"idbyuid\"\n4e6\n2014\n\"CHA\"",
     "crumbs": [
-      "Machine Learning",
-      "Project 1"
+      "Story Telling",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html#question-2",
+    "href": "Story_Telling/project3.html#question-2",
+    "title": "Client Report - Joins",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n1. Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Be creative! Write an SQL query to read in the table(s) you need, then use polars to manipulate the data. Finally, make a graph using Lets-Plot to visualize the comparison. What do you learn?\nI decided to compare the Philies to the Cardinals using the metric salary. After taking a step back and looking at the comparison one would feel that there really isn’t much of a difference. But in reality the difference between their averages is $110,000! If I had to chose a team to play on I would go with the Phillies because that is quite a bonus in comparison to the Cardinals\n\n\nShow the code\n# Include and execute your code here\nq='''\nSELECT teamID, AVG(salary) AS 'Avg_salary' FROM salaries WHERE teamID IN('PHI', 'SLN') GROUP BY teamID\n'''\nsalaries = pl.read_database(q, conn)\n\nsalaries=salaries.with_columns(\n  pl.when(pl.col('teamID') == 'PHI').then(pl.lit(\"Phillies\"))\n  .otherwise(pl.lit('Cardinals')).alias(\"renamedTeamID\")\n)\n\n(\n  ggplot(salaries,aes(x='renamedTeamID', y='Avg_salary'))\n  +geom_bar(stat='identity')\n  +labs(\n    title='Comparision of Salaries',\n    x='The teams',\n    y='Salary average'\n  )\n)",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
     ]
   },
   {
@@ -204,240 +463,187 @@
     "text": "Experience\nJul 2025 – Sept 2025 Team Member at Target, Queen Creek, Arizona\n\nConsistently reported at 4 AM to unload delivery trucks.\nCollaborated with a team to unload and organize high volume shipments within tight 2 hour windows.\nProcessed and distributed 500+ items of merchandise daily with high accuracy\n\nAug 2023 – Aug 2024 Team Member at Tim Hortons, Keswick, Ontario, Canada\n\nCollaborated with a team of 10+ to maintain 30 second service speeds in a high volume environment.\nerved 200+ customers daily with a 98% order accuracy rate through clear, efficient communication.\nResolved 100% of customer issues on-site using professional conflict resolution to ensure guest satisfaction."
   },
   {
-    "objectID": "Story_Telling/project3.html",
-    "href": "Story_Telling/project3.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "Machine_Learning/project1.html",
+    "href": "Machine_Learning/project1.html",
+    "title": "Client Report -How good is it, really?",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project1.html",
-    "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project2.html",
-    "href": "Story_Telling/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "exploration.html",
-    "href": "exploration.html",
-    "title": "Data Exploration",
-    "section": "",
-    "text": "Data exploration is the process of analyzing datasets to uncover patterns, trends, and insights. In these projects, I use statistical analysis and visualization to better understand data and support data-driven decisions.",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "exploration.html#my-approach-to-data-exploration",
-    "href": "exploration.html#my-approach-to-data-exploration",
-    "title": "Data Exploration",
-    "section": "My Approach to Data Exploration",
-    "text": "My Approach to Data Exploration\n\nIdentifying trends and patterns in data\nUsing visualizations to communicate insights\nAnalyzing distributions and relationships\nDetecting outliers and anomalies\nGenerating questions and hypotheses from data",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "exploration.html#my-projects",
-    "href": "exploration.html#my-projects",
-    "title": "Data Exploration",
-    "section": "My Projects",
-    "text": "My Projects",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "exploration.html#projects",
-    "href": "exploration.html#projects",
-    "title": "Data Exploration",
-    "section": "Projects",
-    "text": "Projects\nOverview\nWhat I Did:\n- Calculated summary statistics\n- Plotted distributions and correlations\n- Filtered and grouped data for insights\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "cleansing.html",
-    "href": "cleansing.html",
-    "title": "Data Cleansing",
-    "section": "",
-    "text": "Raw data is rarely usable in its original form. In these projects, I focus on identifying inconsistencies, handling missing values, and transforming messy datasets into clean, reliable data ready for analysis.",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "cleansing.html#my-approach-to-data-cleaning",
-    "href": "cleansing.html#my-approach-to-data-cleaning",
-    "title": "Data Cleansing",
-    "section": "My Approach to Data Cleaning",
-    "text": "My Approach to Data Cleaning\n\nHandling missing values (removal, imputation)\nStandardizing formats (dates, text, categories)\nRemoving duplicates and inconsistencies\nValidating data integrity\nPreparing data for analysis and modeling",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "cleansing.html#my-projects",
-    "href": "cleansing.html#my-projects",
-    "title": "Data Cleansing",
-    "section": "My Projects",
-    "text": "My Projects\nOverview What I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Projects on the side bar to your left]",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project2.html",
-    "href": "Machine_Learning/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import metrics\nimport requests\nimport io\nimport polars.selectors as cs\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# import your data here using polars and the URL\nurl = \"https://raw.githubusercontent.com/byuidatascience/data4dwellings/master/data-raw/dwellings_ml/dwellings_ml.csv\"\n\nresponse = requests.get(url)\n\ndf = pl.read_csv(io.BytesIO(response.content))\ndf\n\n\n\nshape: (22_913, 51)\n\n\n\nparcel\nabstrprd\nlivearea\nfinbsmnt\nbasement\nyrbuilt\ntotunits\nstories\nnocars\nnumbdrm\nnumbaths\nsprice\ndeduct\nnetprice\ntasp\nsmonth\nsyear\ncondition_AVG\ncondition_Excel\ncondition_Fair\ncondition_Good\ncondition_VGood\nquality_A\nquality_B\nquality_C\nquality_D\nquality_X\ngartype_Att\ngartype_Att/Det\ngartype_CP\ngartype_Det\ngartype_None\ngartype_att/CP\ngartype_det/CP\narcstyle_BI-LEVEL\narcstyle_CONVERSIONS\narcstyle_END UNIT\narcstyle_MIDDLE UNIT\narcstyle_ONE AND HALF-STORY\narcstyle_ONE-STORY\narcstyle_SPLIT LEVEL\narcstyle_THREE-STORY\narcstyle_TRI-LEVEL\narcstyle_TRI-LEVEL WITH BASEMENT\narcstyle_TWO AND HALF-STORY\narcstyle_TWO-STORY\nqualified_Q\nqualified_U\nstatus_I\nstatus_V\nbefore1980\n\n\nstr\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n\"00102-08-065-065\"\n1130\n1346\n0\n0\n2004\n1\n2\n2\n2\n2\n100000\n0\n100000\n100000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-073-073\"\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n94700\n0\n94700\n94700\n4\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-078-078\"\n1130\n1346\n0\n0\n2005\n1\n2\n1\n2\n2\n89500\n0\n89500\n89500\n10\n2010\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-081-081\"\n1130\n1146\n0\n0\n2005\n1\n1\n0\n2\n2\n92000\n3220\n88780\n88780\n10\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"00102-08-086-086\"\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n74199\n0\n74199\n74199\n3\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"09154-01-132-132\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n128000\n0\n128000\n128000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"09154-01-133-133\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n121500\n0\n121500\n121500\n11\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0\n\n\n\"09154-01-133-133\"\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n\"09154-01-134-134\"\n1130\n1219\n0\n0\n1998\n1\n1\n0\n3\n2\n116150\n0\n116150\n116150\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n\n\n\"09154-01-137-137\"\n1130\n1041\n0\n0\n1998\n1\n1\n0\n2\n2\n130000\n1000\n129000\n129000\n5\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n0",
     "crumbs": [
       "Machine Learning",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Journey in Data Science Programming",
-    "section": "",
-    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
-  },
-  {
-    "objectID": "index.html#ash-uchida",
-    "href": "index.html#ash-uchida",
-    "title": "My Journey in Data Science Programming",
-    "section": "",
-    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
-  },
-  {
-    "objectID": "index.html#featured-work",
-    "href": "index.html#featured-work",
-    "title": "My Journey in Data Science Programming",
-    "section": "Featured Work",
-    "text": "Featured Work\n\nHackathon Winner (2nd Place)\nBuilt a secure analytics platform that converts natural language into validated SQL using AI and Databricks, enabling users to safely query data without writing SQL.\n\n\nZoom Zone\nDeveloped a full-stack scheduling platform integrating Google Calendar and Zoom APIs, allowing users to automate meeting creation and avoid scheduling conflicts."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "My Journey in Data Science Programming",
-    "section": "About Me",
-    "text": "About Me\nI’m a Computer Science student with a passion for building applications and working with data. I enjoy creating full-stack projects, exploring machine learning, and solving real-world problems.\nOutside of tech, I enjoy snowboarding, painting murals, and staying active outdoors."
-  },
-  {
-    "objectID": "story_telling.html",
-    "href": "story_telling.html",
-    "title": "Data Storytelling",
-    "section": "",
-    "text": "Data storytelling combines analysis and communication to turn data into meaningful narratives. In these projects, I focus on presenting insights clearly through visualizations and structured storytelling to support decision-making.",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "story_telling.html#my-approach-to-data-storytelling",
-    "href": "story_telling.html#my-approach-to-data-storytelling",
-    "title": "Data Storytelling",
-    "section": "My Approach to Data Storytelling",
-    "text": "My Approach to Data Storytelling\n\nFraming problems in a real-world context\nUsing visuals to highlight key insights\nSimplifying complex data into clear messages\nStructuring analysis as a narrative\nProviding actionable recommendations",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "story_telling.html#projects",
-    "href": "story_telling.html#projects",
-    "title": "Data Storytelling",
-    "section": "Projects",
-    "text": "Projects\nOverview\nAnalyzed data to tell a clear, actionable story.\nWhat I Did:\n- Explored trends and patterns in the dataset\n- Highlighted key insights visually\n- Summarized findings into a clear narrative\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project2.html",
-    "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Exploration",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competitions",
       "Project 1"
     ]
   },
   {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "objectID": "Machine_Learning/project1.html#question-1",
+    "href": "Machine_Learning/project1.html#question-1",
+    "title": "Client Report -How good is it, really?",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nDescribe the quality of your classification model using 2-3 different evaluation metrics. You also need to explain how to define/interpret each of the evaluation metrics you use.\n\nThe different evaluation metrics that I used were classification report and confusion matrix. USing these we can then see the percentage of how acurate our predictions were. from what we did we got high 80’s when it came to our predictions which is a good percentage for our predictions\n\n\nShow the code\nx = df.select((cs.numeric()).exclude([\"before1980\",\"yrbuilt\"]))\ny = df.select('before1980')\n\n\n\n\nShow the code\n# Include and execute your code here\n# Don't forget, you need another import statement to import the desired ML model from sklearn\nfrom sklearn.model_selection import train_test_split\n\nx_train, x_test, y_train, y_test = train_test_split(x,y, random_state=12394, train_size=.8)\n\n\n\n\nShow the code\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.neighbors import KNeighborsClassifier\n\n# Use .to_series() to flatten the target column without manual numpy calls\ny_train_series = y_train.to_series()\n\ntree_classifier = DecisionTreeClassifier()\ntree_classifier.fit(x_train, y_train_series)\n\nforest_classifier = RandomForestClassifier()\nforest_classifier.fit(x_train, y_train_series)\n\nknee_classifier = KNeighborsClassifier()\nknee_classifier.fit(x_train, y_train_series)\n\n\nKNeighborsClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.KNeighborsClassifier?Documentation for KNeighborsClassifieriFitted\n        \n            \n                Parameters\n                \n\n\n\n\n\n\n\n\n\nn_neighbors n_neighbors: int, default=5\n\nNumber of neighbors to use by default for :meth:`kneighbors` queries.\n5\n\n\n\nweights weights: {'uniform', 'distance'}, callable or None, default='uniform'\n\nWeight function used in prediction. Possible values:\n\n- 'uniform' : uniform weights. All points in each neighborhood\nare weighted equally.\n- 'distance' : weight points by the inverse of their distance.\nin this case, closer neighbors of a query point will have a\ngreater influence than neighbors which are further away.\n- [callable] : a user-defined function which accepts an\narray of distances, and returns an array of the same shape\ncontaining the weights.\n\nRefer to the example entitled\n:ref:`sphx_glr_auto_examples_neighbors_plot_classification.py`\nshowing the impact of the `weights` parameter on the decision\nboundary.\n'uniform'\n\n\n\nalgorithm algorithm: {'auto', 'ball_tree', 'kd_tree', 'brute'}, default='auto'\n\nAlgorithm used to compute the nearest neighbors:\n\n- 'ball_tree' will use :class:`BallTree`\n- 'kd_tree' will use :class:`KDTree`\n- 'brute' will use a brute-force search.\n- 'auto' will attempt to decide the most appropriate algorithm\nbased on the values passed to :meth:`fit` method.\n\nNote: fitting on sparse input will override the setting of\nthis parameter, using brute force.\n'auto'\n\n\n\nleaf_size leaf_size: int, default=30\n\nLeaf size passed to BallTree or KDTree. This can affect the\nspeed of the construction and query, as well as the memory\nrequired to store the tree. The optimal value depends on the\nnature of the problem.\n30\n\n\n\np p: float, default=2\n\nPower parameter for the Minkowski metric. When p = 1, this is equivalent\nto using manhattan_distance (l1), and euclidean_distance (l2) for p = 2.\nFor arbitrary p, minkowski_distance (l_p) is used. This parameter is expected\nto be positive.\n2\n\n\n\nmetric metric: str or callable, default='minkowski'\n\nMetric to use for distance computation. Default is \"minkowski\", which\nresults in the standard Euclidean distance when p = 2. See the\ndocumentation of `scipy.spatial.distance\n&lt; docs.scipy.org doc scipy reference spatial.distance.html&gt;`_ and\nthe metrics listed in\n:class:`~sklearn.metrics.pairwise.distance_metrics` for valid metric\nvalues.\n\nIf metric is \"precomputed\", X is assumed to be a distance matrix and\nmust be square during fit. X may be a :term:`sparse graph`, in which\ncase only \"nonzero\" elements may be considered neighbors.\n\nIf metric is a callable function, it takes two arrays representing 1D\nvectors as inputs and must return one value indicating the distance\nbetween those vectors. This works for Scipy's metrics, but is less\nefficient than passing the metric name as a string.\n'minkowski'\n\n\n\nmetric_params metric_params: dict, default=None\n\nAdditional keyword arguments for the metric function.\nNone\n\n\n\nn_jobs n_jobs: int, default=None\n\nThe number of parallel jobs to run for neighbors search.\n``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.\n``-1`` means using all processors. See :term:`Glossary `\nfor more details.\nDoesn't affect :meth:`fit` method.\nNone\n\n\n\n\n            \n        \n    \n\n\n\n\nShow the code\nfrom sklearn.metrics import classification_report, confusion_matrix\n\ny_pred = tree_classifier.predict(x_test)\n\nprint(classification_report(y_test, y_pred))\nprint(confusion_matrix(y_test,y_pred))\n\n\n              precision    recall  f1-score   support\n\n           0       0.86      0.88      0.87      1690\n           1       0.93      0.91      0.92      2893\n\n    accuracy                           0.90      4583\n   macro avg       0.89      0.90      0.89      4583\nweighted avg       0.90      0.90      0.90      4583\n\n[[1483  207]\n [ 248 2645]]",
     "crumbs": [
-      "Competitions",
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html#question-2",
+    "href": "Machine_Learning/project1.html#question-2",
+    "title": "Client Report -How good is it, really?",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\n\nJustify your classification model by discussing the most important features selected by your model. This discussion should include a plot of permutation importance values for the most important features. Were there any features you thought would be importance but weren’t?\n\nwe can use the permutation importance function to go through our data and sort what their imporacnce is in descding order to see the top 10 most important piece of data. As seen we printed out a table with the top 10 results\n\n\nShow the code\n# Include and execute your code here\nfrom sklearn.inspection import permutation_importance\n\n# Calculate importance (keep these as separate variables!)\nresult = permutation_importance(forest_classifier, x_test, y_test, n_repeats=5, random_state=4552)\n\nfeature_names = x.columns\n\n#  Create the Polars DataFrame for plotting\nimportance_df = pl.DataFrame({\n    'vars': feature_names,\n    'importance': result.importances_mean\n}).sort('importance', descending=True)\n\nimportance_df.head(10) # Show top 10\n\n\n\nshape: (10, 2)\n\n\n\nvars\nimportance\n\n\nstr\nf64\n\n\n\n\n\"gartype_Att\"\n0.038272\n\n\n\"numbaths\"\n0.033079\n\n\n\"abstrprd\"\n0.029064\n\n\n\"arcstyle_ONE-STORY\"\n0.027231\n\n\n\"stories\"\n0.024438\n\n\n\"livearea\"\n0.022431\n\n\n\"quality_C\"\n0.015492\n\n\n\"basement\"\n0.014357\n\n\n\"numbdrm\"\n0.012306\n\n\n\"nocars\"\n0.011434",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html#question-3",
+    "href": "Machine_Learning/project1.html#question-3",
+    "title": "Client Report -How good is it, really?",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\n\nFor the 3 most important features, explain their relationship to the target variable. Use a plot to illustrate the relationship. (3 plots minimum)\n\nThe three most important features are: gartype_Att, numbaths, stories. So we just need to graph these out compared to the original before1980 to see the trend\n\n\nShow the code\n# Include and execute your code here\n(\n  ggplot(df, aes(x=\"gartype_Att\", y=\"before1980\"))\n  +geom_bar(stat='summary')\n  + labs(title=\"Attached Garage\", y=\"Rate\", x=\"Has Attached Garage\")\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\nShow the code\n(\n  ggplot(df,aes(x=\"numbaths\",y=\"before1980\"))\n  +geom_line(stat=\"summary\")\n  +labs(title=\"Number of Baths\", x=\"Baths\")\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\nShow the code\n(\n  ggplot(df,aes(x=\"stories\", y=\"before1980\"))\n  +geom_bar(stat=\"summary\")\n  +labs(title=\"Number of stories\", x=\"Stories\")\n)",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html",
+    "href": "Machine_Learning/project3.html",
+    "title": "Client Report - Stretch",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\nfrom sklearn.model_selection import train_test_split\nfrom sklearn import metrics\nimport requests\nimport io\nimport polars.selectors as cs\nimport os\nimport certifi\nimport ssl\n# add the additional libraries you need to import for ML here\n\nLetsPlot.setup_html(isolated_frame=True)\n\n\n\n\nShow the code\n# Load the main dwellings data\ndwellings = pl.read_csv(\"dwellings_ml.csv\")\nneighborhoods = pl.read_csv(\"dwellings_neighborhoods_ml.csv\")\n\nctx = pl.SQLContext( dwellings=dwellings, neighborhoods=neighborhoods)\n\n\n\n1. Join the dwellings_neighborhoods_ml.csv data to the dwelling_ml.csv on the parcel column to create a new dataset. Duplicate the code for the model you recommended in the previous taskn above and update it to use this data. Explain the differences and if this changes the model you recomend to the Client.\nYes I would recommd this model over the previous model because the accuracy from this report is higher than the previous report. Which makes sense because for this report we combined 2 datasets, and the more data one has the more accurate one becomes.\nThis was the previous reports accuracy:\n\n\n\nClass\nPrecision\nRecall\nF1-Score\nSupport\n\n\n\n\n0\n0.86\n0.87\n0.87\n1690\n\n\n1\n0.92\n0.92\n0.92\n2893\n\n\n——:\n———-:\n——-:\n———:\n——–:\n\n\nAccuracy\n\n\n0.90\n4583\n\n\nMacro Avg\n0.89\n0.89\n0.89\n4583\n\n\nWeighted Avg\n0.90\n0.90\n0.90\n4583\n\n\n\nAnd this is the current reports accuracy:\n\n\n\nClass\nPrecision\nRecall\nF1-Score\nSupport\n\n\n\n\n0\n0.94\n0.95\n0.94\n2134\n\n\n1\n0.97\n0.96\n0.96\n3459\n\n\n——:\n———-:\n——-:\n———:\n——–:\n\n\nAccuracy\n\n\n0.96\n5593\n\n\nMacro Avg\n0.95\n0.96\n0.95\n5593\n\n\nWeighted Avg\n0.96\n0.96\n0.96\n5593\n\n\n\n\n\nShow the code\njoinedData = '''\nSELECT d.*, n.* exclude(parcel)\nFROM dwellings d\n    JOIN neighborhoods n \n        ON d.parcel = n.parcel\n'''\ndf = ctx.execute(joinedData).collect()\n\ndf\n\n\n\nshape: (27_961, 323)\n\n\n\nabstrprd\nlivearea\nfinbsmnt\nbasement\nyrbuilt\ntotunits\nstories\nnocars\nnumbdrm\nnumbaths\nsprice\ndeduct\nnetprice\ntasp\nsmonth\nsyear\ncondition_AVG\ncondition_Excel\ncondition_Fair\ncondition_Good\ncondition_VGood\nquality_A\nquality_B\nquality_C\nquality_D\nquality_X\ngartype_Att\ngartype_Att/Det\ngartype_CP\ngartype_Det\ngartype_None\ngartype_att/CP\ngartype_det/CP\narcstyle_BI-LEVEL\narcstyle_CONVERSIONS\narcstyle_END UNIT\narcstyle_MIDDLE UNIT\n…\nnbhd_690\nnbhd_691\nnbhd_692\nnbhd_693\nnbhd_694\nnbhd_695\nnbhd_698\nnbhd_702\nnbhd_703\nnbhd_704\nnbhd_705\nnbhd_706\nnbhd_707\nnbhd_708\nnbhd_709\nnbhd_710\nnbhd_711\nnbhd_712\nnbhd_713\nnbhd_714\nnbhd_715\nnbhd_716\nnbhd_717\nnbhd_718\nnbhd_719\nnbhd_720\nnbhd_801\nnbhd_802\nnbhd_803\nnbhd_804\nnbhd_805\nnbhd_901\nnbhd_902\nnbhd_903\nnbhd_904\nnbhd_905\nnbhd_906\n\n\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n…\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n1130\n1346\n0\n0\n2004\n1\n2\n2\n2\n2\n100000\n0\n100000\n100000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n94700\n0\n94700\n94700\n4\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1346\n0\n0\n2005\n1\n2\n1\n2\n2\n89500\n0\n89500\n89500\n10\n2010\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1146\n0\n0\n2005\n1\n1\n0\n2\n2\n92000\n3220\n88780\n88780\n10\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n74199\n0\n74199\n74199\n3\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n121500\n0\n121500\n121500\n11\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n1219\n0\n0\n1998\n1\n1\n0\n3\n2\n116150\n0\n116150\n116150\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n1041\n0\n0\n1998\n1\n1\n0\n2\n2\n130000\n1000\n129000\n129000\n5\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n\n\n\n\n\n\nShow the code\nx = df.select((cs.numeric()).exclude([\"before1980\",\"yrbuilt\"]))\ny = df.select('before1980')\n\n\n\n\nShow the code\nfrom sklearn.model_selection import train_test_split\n\nx_train, x_test, y_train, y_test = train_test_split(x,y, random_state=12394, train_size=.8)\n\n\n\n\nShow the code\nfrom sklearn.tree import DecisionTreeClassifier\n# Use .to_series() to flatten the target column without manual numpy calls\ny_train_series = y_train.to_series()\n\ntree_classifier = DecisionTreeClassifier()\ntree_classifier.fit(x_train, y_train_series)\n\n\nDecisionTreeClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.DecisionTreeClassifier?Documentation for DecisionTreeClassifieriFitted\n        \n            \n                Parameters\n                \n\n\n\n\n\n\n\n\n\ncriterion criterion: {\"gini\", \"entropy\", \"log_loss\"}, default=\"gini\"\n\nThe function to measure the quality of a split. Supported criteria are\n\"gini\" for the Gini impurity and \"log_loss\" and \"entropy\" both for the\nShannon information gain, see :ref:`tree_mathematical_formulation`.\n'gini'\n\n\n\nsplitter splitter: {\"best\", \"random\"}, default=\"best\"\n\nThe strategy used to choose the split at each node. Supported\nstrategies are \"best\" to choose the best split and \"random\" to choose\nthe best random split.\n'best'\n\n\n\nmax_depth max_depth: int, default=None\n\nThe maximum depth of the tree. If None, then nodes are expanded until\nall leaves are pure or until all leaves contain less than\nmin_samples_split samples.\nNone\n\n\n\nmin_samples_split min_samples_split: int or float, default=2\n\nThe minimum number of samples required to split an internal node:\n\n- If int, then consider `min_samples_split` as the minimum number.\n- If float, then `min_samples_split` is a fraction and\n`ceil(min_samples_split * n_samples)` are the minimum\nnumber of samples for each split.\n\n.. versionchanged:: 0.18\nAdded float values for fractions.\n2\n\n\n\nmin_samples_leaf min_samples_leaf: int or float, default=1\n\nThe minimum number of samples required to be at a leaf node.\nA split point at any depth will only be considered if it leaves at\nleast ``min_samples_leaf`` training samples in each of the left and\nright branches. This may have the effect of smoothing the model,\nespecially in regression.\n\n- If int, then consider `min_samples_leaf` as the minimum number.\n- If float, then `min_samples_leaf` is a fraction and\n`ceil(min_samples_leaf * n_samples)` are the minimum\nnumber of samples for each node.\n\n.. versionchanged:: 0.18\nAdded float values for fractions.\n1\n\n\n\nmin_weight_fraction_leaf min_weight_fraction_leaf: float, default=0.0\n\nThe minimum weighted fraction of the sum total of weights (of all\nthe input samples) required to be at a leaf node. Samples have\nequal weight when sample_weight is not provided.\n0.0\n\n\n\nmax_features max_features: int, float or {\"sqrt\", \"log2\"}, default=None\n\nThe number of features to consider when looking for the best split:\n\n- If int, then consider `max_features` features at each split.\n- If float, then `max_features` is a fraction and\n`max(1, int(max_features * n_features_in_))` features are considered at\neach split.\n- If \"sqrt\", then `max_features=sqrt(n_features)`.\n- If \"log2\", then `max_features=log2(n_features)`.\n- If None, then `max_features=n_features`.\n\n.. note::\n\nThe search for a split does not stop until at least one\nvalid partition of the node samples is found, even if it requires to\neffectively inspect more than ``max_features`` features.\nNone\n\n\n\nrandom_state random_state: int, RandomState instance or None, default=None\n\nControls the randomness of the estimator. The features are always\nrandomly permuted at each split, even if ``splitter`` is set to\n``\"best\"``. When ``max_features &lt; n_features``, the algorithm will\nselect ``max_features`` at random at each split before finding the best\nsplit among them. But the best found split may vary across different\nruns, even if ``max_features=n_features``. That is the case, if the\nimprovement of the criterion is identical for several splits and one\nsplit has to be selected at random. To obtain a deterministic behaviour\nduring fitting, ``random_state`` has to be fixed to an integer.\nSee :term:`Glossary ` for details.\nNone\n\n\n\nmax_leaf_nodes max_leaf_nodes: int, default=None\n\nGrow a tree with ``max_leaf_nodes`` in best-first fashion.\nBest nodes are defined as relative reduction in impurity.\nIf None then unlimited number of leaf nodes.\nNone\n\n\n\nmin_impurity_decrease min_impurity_decrease: float, default=0.0\n\nA node will be split if this split induces a decrease of the impurity\ngreater than or equal to this value.\n\nThe weighted impurity decrease equation is the following::\n\nN_t / N * (impurity - N_t_R / N_t * right_impurity\n- N_t_L / N_t * left_impurity)\n\nwhere ``N`` is the total number of samples, ``N_t`` is the number of\nsamples at the current node, ``N_t_L`` is the number of samples in the\nleft child, and ``N_t_R`` is the number of samples in the right child.\n\n``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum,\nif ``sample_weight`` is passed.\n\n.. versionadded:: 0.19\n0.0\n\n\n\nclass_weight class_weight: dict, list of dict or \"balanced\", default=None\n\nWeights associated with classes in the form ``{class_label: weight}``.\nIf None, all classes are supposed to have weight one. For\nmulti-output problems, a list of dicts can be provided in the same\norder as the columns of y.\n\nNote that for multioutput (including multilabel) weights should be\ndefined for each class of every column in its own dict. For example,\nfor four-class multilabel classification weights should be\n[{0: 1, 1: 1}, {0: 1, 1: 5}, {0: 1, 1: 1}, {0: 1, 1: 1}] instead of\n[{1:1}, {2:5}, {3:1}, {4:1}].\n\nThe \"balanced\" mode uses the values of y to automatically adjust\nweights inversely proportional to class frequencies in the input data\nas ``n_samples / (n_classes * np.bincount(y))``\n\nFor multi-output, the weights of each column of y will be multiplied.\n\nNote that these weights will be multiplied with sample_weight (passed\nthrough the fit method) if sample_weight is specified.\nNone\n\n\n\nccp_alpha ccp_alpha: non-negative float, default=0.0\n\nComplexity parameter used for Minimal Cost-Complexity Pruning. The\nsubtree with the largest cost complexity that is smaller than\n``ccp_alpha`` will be chosen. By default, no pruning is performed. See\n:ref:`minimal_cost_complexity_pruning` for details. See\n:ref:`sphx_glr_auto_examples_tree_plot_cost_complexity_pruning.py`\nfor an example of such pruning.\n\n.. versionadded:: 0.22\n0.0\n\n\n\nmonotonic_cst monotonic_cst: array-like of int of shape (n_features), default=None\n\nIndicates the monotonicity constraint to enforce on each feature.\n- 1: monotonic increase\n- 0: no constraint\n- -1: monotonic decrease\n\nIf monotonic_cst is None, no constraints are applied.\n\nMonotonicity constraints are not supported for:\n- multiclass classifications (i.e. when `n_classes &gt; 2`),\n- multioutput classifications (i.e. when `n_outputs_ &gt; 1`),\n- classifications trained on data with missing values.\n\nThe constraints hold over the probability of the positive class.\n\nRead more in the :ref:`User Guide `.\n\n.. versionadded:: 1.4\nNone\n\n\n\n\n            \n        \n    \n\n\n\n\nShow the code\nfrom sklearn.metrics import classification_report\n\ny_pred = tree_classifier.predict(x_test)\n\nprint(classification_report(y_test, y_pred))\n\n\n              precision    recall  f1-score   support\n\n           0       0.94      0.95      0.94      2134\n           1       0.97      0.96      0.96      3459\n\n    accuracy                           0.96      5593\n   macro avg       0.95      0.95      0.95      5593\nweighted avg       0.96      0.96      0.96      5593\n\n\n\n\n\n2. Can you build a model that predicts the year a house was built? Note this is a regression ML model, not a classifier. Report appropriate evaluation metrics for the model. Explain the model and the evaluation metrics you used to determine if the model is good.\nI would have to say the this model worked quite well because in the end we got: Mean Absolute Error: 6.37 years, whihch means we are almost always on point or about 6 years off\n\n\nShow the code\njoinedData = '''\nSELECT d.*, n.* exclude(parcel)\nFROM dwellings d\n    JOIN neighborhoods n \n        ON d.parcel = n.parcel\n'''\ndf = ctx.execute(joinedData).collect()\n\ndf\n\n\n\nshape: (27_961, 323)\n\n\n\nabstrprd\nlivearea\nfinbsmnt\nbasement\nyrbuilt\ntotunits\nstories\nnocars\nnumbdrm\nnumbaths\nsprice\ndeduct\nnetprice\ntasp\nsmonth\nsyear\ncondition_AVG\ncondition_Excel\ncondition_Fair\ncondition_Good\ncondition_VGood\nquality_A\nquality_B\nquality_C\nquality_D\nquality_X\ngartype_Att\ngartype_Att/Det\ngartype_CP\ngartype_Det\ngartype_None\ngartype_att/CP\ngartype_det/CP\narcstyle_BI-LEVEL\narcstyle_CONVERSIONS\narcstyle_END UNIT\narcstyle_MIDDLE UNIT\n…\nnbhd_690\nnbhd_691\nnbhd_692\nnbhd_693\nnbhd_694\nnbhd_695\nnbhd_698\nnbhd_702\nnbhd_703\nnbhd_704\nnbhd_705\nnbhd_706\nnbhd_707\nnbhd_708\nnbhd_709\nnbhd_710\nnbhd_711\nnbhd_712\nnbhd_713\nnbhd_714\nnbhd_715\nnbhd_716\nnbhd_717\nnbhd_718\nnbhd_719\nnbhd_720\nnbhd_801\nnbhd_802\nnbhd_803\nnbhd_804\nnbhd_805\nnbhd_901\nnbhd_902\nnbhd_903\nnbhd_904\nnbhd_905\nnbhd_906\n\n\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n…\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n1130\n1346\n0\n0\n2004\n1\n2\n2\n2\n2\n100000\n0\n100000\n100000\n2\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n94700\n0\n94700\n94700\n4\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1346\n0\n0\n2005\n1\n2\n1\n2\n2\n89500\n0\n89500\n89500\n10\n2010\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1146\n0\n0\n2005\n1\n1\n0\n2\n2\n92000\n3220\n88780\n88780\n10\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n1130\n1249\n0\n0\n2005\n1\n1\n1\n2\n2\n74199\n0\n74199\n74199\n3\n2012\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n121500\n0\n121500\n121500\n11\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n955\n0\n0\n1998\n1\n1\n0\n2\n2\n74229\n0\n74229\n74229\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n1219\n0\n0\n1998\n1\n1\n0\n3\n2\n116150\n0\n116150\n116150\n6\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n1130\n1041\n0\n0\n1998\n1\n1\n0\n2\n2\n130000\n1000\n129000\n129000\n5\n2011\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n…\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n\n\n\n\n\n\n\n\nShow the code\nx = df.select((cs.numeric()).exclude([\"before1980\",\"yrbuilt\"]))\ny = df.select('yrbuilt')\n\n\n\n\nShow the code\nfrom sklearn.model_selection import train_test_split\n\nx_train, x_test, y_train, y_test = train_test_split(x,y, random_state=1264, train_size=.8)\n\n\n\n\nShow the code\nfrom sklearn.ensemble import RandomForestRegressor\nregressor = RandomForestRegressor(random_state=42)\n\n\n\n\nShow the code\nregressor.fit(x_train, y_train)\n\n\nRandomForestRegressor(random_state=42)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.RandomForestRegressor?Documentation for RandomForestRegressoriFitted\n        \n            \n                Parameters\n                \n\n\n\n\n\n\n\n\n\nn_estimators n_estimators: int, default=100\n\nThe number of trees in the forest.\n\n.. versionchanged:: 0.22\nThe default value of ``n_estimators`` changed from 10 to 100\nin 0.22.\n100\n\n\n\ncriterion criterion: {\"squared_error\", \"absolute_error\", \"friedman_mse\", \"poisson\"}, default=\"squared_error\"\n\nThe function to measure the quality of a split. Supported criteria\nare \"squared_error\" for the mean squared error, which is equal to\nvariance reduction as feature selection criterion and minimizes the L2\nloss using the mean of each terminal node, \"friedman_mse\", which uses\nmean squared error with Friedman's improvement score for potential\nsplits, \"absolute_error\" for the mean absolute error, which minimizes\nthe L1 loss using the median of each terminal node, and \"poisson\" which\nuses reduction in Poisson deviance to find splits.\nTraining using \"absolute_error\" is significantly slower\nthan when using \"squared_error\".\n\n.. versionadded:: 0.18\nMean Absolute Error (MAE) criterion.\n\n.. versionadded:: 1.0\nPoisson criterion.\n'squared_error'\n\n\n\nmax_depth max_depth: int, default=None\n\nThe maximum depth of the tree. If None, then nodes are expanded until\nall leaves are pure or until all leaves contain less than\nmin_samples_split samples.\nNone\n\n\n\nmin_samples_split min_samples_split: int or float, default=2\n\nThe minimum number of samples required to split an internal node:\n\n- If int, then consider `min_samples_split` as the minimum number.\n- If float, then `min_samples_split` is a fraction and\n`ceil(min_samples_split * n_samples)` are the minimum\nnumber of samples for each split.\n\n.. versionchanged:: 0.18\nAdded float values for fractions.\n2\n\n\n\nmin_samples_leaf min_samples_leaf: int or float, default=1\n\nThe minimum number of samples required to be at a leaf node.\nA split point at any depth will only be considered if it leaves at\nleast ``min_samples_leaf`` training samples in each of the left and\nright branches. This may have the effect of smoothing the model,\nespecially in regression.\n\n- If int, then consider `min_samples_leaf` as the minimum number.\n- If float, then `min_samples_leaf` is a fraction and\n`ceil(min_samples_leaf * n_samples)` are the minimum\nnumber of samples for each node.\n\n.. versionchanged:: 0.18\nAdded float values for fractions.\n1\n\n\n\nmin_weight_fraction_leaf min_weight_fraction_leaf: float, default=0.0\n\nThe minimum weighted fraction of the sum total of weights (of all\nthe input samples) required to be at a leaf node. Samples have\nequal weight when sample_weight is not provided.\n0.0\n\n\n\nmax_features max_features: {\"sqrt\", \"log2\", None}, int or float, default=1.0\n\nThe number of features to consider when looking for the best split:\n\n- If int, then consider `max_features` features at each split.\n- If float, then `max_features` is a fraction and\n`max(1, int(max_features * n_features_in_))` features are considered at each\nsplit.\n- If \"sqrt\", then `max_features=sqrt(n_features)`.\n- If \"log2\", then `max_features=log2(n_features)`.\n- If None or 1.0, then `max_features=n_features`.\n\n.. note::\nThe default of 1.0 is equivalent to bagged trees and more\nrandomness can be achieved by setting smaller values, e.g. 0.3.\n\n.. versionchanged:: 1.1\nThe default of `max_features` changed from `\"auto\"` to 1.0.\n\nNote: the search for a split does not stop until at least one\nvalid partition of the node samples is found, even if it requires to\neffectively inspect more than ``max_features`` features.\n1.0\n\n\n\nmax_leaf_nodes max_leaf_nodes: int, default=None\n\nGrow trees with ``max_leaf_nodes`` in best-first fashion.\nBest nodes are defined as relative reduction in impurity.\nIf None then unlimited number of leaf nodes.\nNone\n\n\n\nmin_impurity_decrease min_impurity_decrease: float, default=0.0\n\nA node will be split if this split induces a decrease of the impurity\ngreater than or equal to this value.\n\nThe weighted impurity decrease equation is the following::\n\nN_t / N * (impurity - N_t_R / N_t * right_impurity\n- N_t_L / N_t * left_impurity)\n\nwhere ``N`` is the total number of samples, ``N_t`` is the number of\nsamples at the current node, ``N_t_L`` is the number of samples in the\nleft child, and ``N_t_R`` is the number of samples in the right child.\n\n``N``, ``N_t``, ``N_t_R`` and ``N_t_L`` all refer to the weighted sum,\nif ``sample_weight`` is passed.\n\n.. versionadded:: 0.19\n0.0\n\n\n\nbootstrap bootstrap: bool, default=True\n\nWhether bootstrap samples are used when building trees. If False, the\nwhole dataset is used to build each tree.\nTrue\n\n\n\noob_score oob_score: bool or callable, default=False\n\nWhether to use out-of-bag samples to estimate the generalization score.\nBy default, :func:`~sklearn.metrics.r2_score` is used.\nProvide a callable with signature `metric(y_true, y_pred)` to use a\ncustom metric. Only available if `bootstrap=True`.\n\nFor an illustration of out-of-bag (OOB) error estimation, see the example\n:ref:`sphx_glr_auto_examples_ensemble_plot_ensemble_oob.py`.\nFalse\n\n\n\nn_jobs n_jobs: int, default=None\n\nThe number of jobs to run in parallel. :meth:`fit`, :meth:`predict`,\n:meth:`decision_path` and :meth:`apply` are all parallelized over the\ntrees. ``None`` means 1 unless in a :obj:`joblib.parallel_backend`\ncontext. ``-1`` means using all processors. See :term:`Glossary\n` for more details.\nNone\n\n\n\nrandom_state random_state: int, RandomState instance or None, default=None\n\nControls both the randomness of the bootstrapping of the samples used\nwhen building trees (if ``bootstrap=True``) and the sampling of the\nfeatures to consider when looking for the best split at each node\n(if ``max_features &lt; n_features``).\nSee :term:`Glossary ` for details.\n42\n\n\n\nverbose verbose: int, default=0\n\nControls the verbosity when fitting and predicting.\n0\n\n\n\nwarm_start warm_start: bool, default=False\n\nWhen set to ``True``, reuse the solution of the previous call to fit\nand add more estimators to the ensemble, otherwise, just fit a whole\nnew forest. See :term:`Glossary ` and\n:ref:`tree_ensemble_warm_start` for details.\nFalse\n\n\n\nccp_alpha ccp_alpha: non-negative float, default=0.0\n\nComplexity parameter used for Minimal Cost-Complexity Pruning. The\nsubtree with the largest cost complexity that is smaller than\n``ccp_alpha`` will be chosen. By default, no pruning is performed. See\n:ref:`minimal_cost_complexity_pruning` for details. See\n:ref:`sphx_glr_auto_examples_tree_plot_cost_complexity_pruning.py`\nfor an example of such pruning.\n\n.. versionadded:: 0.22\n0.0\n\n\n\nmax_samples max_samples: int or float, default=None\n\nIf bootstrap is True, the number of samples to draw from X\nto train each base estimator.\n\n- If None (default), then draw `X.shape[0]` samples.\n- If int, then draw `max_samples` samples.\n- If float, then draw `max(round(n_samples * max_samples), 1)` samples. Thus,\n`max_samples` should be in the interval `(0.0, 1.0]`.\n\n.. versionadded:: 0.22\nNone\n\n\n\nmonotonic_cst monotonic_cst: array-like of int of shape (n_features), default=None\n\nIndicates the monotonicity constraint to enforce on each feature.\n- 1: monotonically increasing\n- 0: no constraint\n- -1: monotonically decreasing\n\nIf monotonic_cst is None, no constraints are applied.\n\nMonotonicity constraints are not supported for:\n- multioutput regressions (i.e. when `n_outputs_ &gt; 1`),\n- regressions trained on data with missing values.\n\nRead more in the :ref:`User Guide `.\n\n.. versionadded:: 1.4\nNone\n\n\n\n\n            \n        \n    \n\n\n\n\nShow the code\npred = regressor.predict(x_test)\n\n\n\n\nShow the code\nfrom sklearn.metrics import mean_absolute_error\n\nmae = mean_absolute_error(y_test, pred)\n\nprint(f\"Mean Absolute Error: {mae:.2f} years\")\n\n\nMean Absolute Error: 6.37 years\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
       "Project 3"
     ]
   },
   {
-    "objectID": "Full_Stack/project2.html",
-    "href": "Full_Stack/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "ml.html",
+    "href": "ml.html",
+    "title": "Machine Learning",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Machine Learning allows us to uncover patterns, make predictions, and optimize solutions using data. In these projects, I build models that provide actionable insights and demonstrate real-world impact.",
     "crumbs": [
-      "Full Stack",
-      "Project 2"
+      "Machine Learning"
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project2.html",
-    "href": "Cleansing_Projects/project2.html",
-    "title": "Client Report - [Insert Project Title]",
+    "objectID": "ml.html#my-approach-to-machine-learning",
+    "href": "ml.html#my-approach-to-machine-learning",
+    "title": "Machine Learning",
+    "section": "My Approach to Machine Learning",
+    "text": "My Approach to Machine Learning\n\nData preprocessing and feature engineering\n\nSupervised and unsupervised learning\n\nModel evaluation, validation, and tuning\n\nUsing Python libraries: scikit-learn, Pandas, NumPy\n\nVisualizing results to communicate model performance",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "ml.html#projects",
+    "href": "ml.html#projects",
+    "title": "Machine Learning",
+    "section": "Projects",
+    "text": "Projects\nOverview\nWhat I Did:\n- Engineered key features\n- Trained regression models\n- Evaluated model performance\nTools:\nPython, scikit-learn, NumPy\n[You can view the full project on the sidebar to your left]",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
+    "title": "Client Report - Flights: Column Aggregation",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "text": "Show the code\nimport polars as pl\nimport requests #new for reading in JSON\nimport io       #new for reading in JSON\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nurl = \"https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json\"\nresponse = requests.get(url)\ndf = pl.read_json(io.BytesIO(response.content))\ndf\n\n\n\nshape: (924, 17)\n\n\n\nairport_code\nairport_name\nmonth\nyear\nnum_of_flights_total\nnum_of_delays_carrier\nnum_of_delays_late_aircraft\nnum_of_delays_nas\nnum_of_delays_security\nnum_of_delays_weather\nnum_of_delays_total\nminutes_delayed_carrier\nminutes_delayed_late_aircraft\nminutes_delayed_nas\nminutes_delayed_security\nminutes_delayed_weather\nminutes_delayed_total\n\n\nstr\nstr\nstr\ni64\ni64\nstr\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\ni64\n\n\n\n\n\"ATL\"\n\"Atlanta, GA: Hartsfield-Jackso…\n\"January\"\n2005\n35048\n\"1500+\"\n-999\n4598\n10\n448\n8355\n116423\n104415\n207467\n297\n36931\n465533\n\n\n\"DEN\"\n\"Denver, CO: Denver Internation…\n\"January\"\n2005\n12687\n\"1041\"\n928\n935\n11\n233\n3153\n53537\n70301\n36817\n363\n21779\n182797\n\n\n\"IAD\"\n\"\"\n\"January\"\n2005\n12381\n\"414\"\n1058\n895\n4\n61\n2430\nnull\n70919\n35660\n208\n4497\n134881\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"January\"\n2005\n28194\n\"1197\"\n2255\n5415\n5\n306\n9178\n88691\n160811\n364382\n151\n24859\n638894\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"January\"\n2005\n7283\n\"572\"\n680\n638\n7\n56\n1952\n27436\n38445\n21127\n218\n4326\n91552\n\n\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n…\n\n\n\"IAD\"\n\"Washington, DC: Washington Dul…\n\"December\"\n2015\n2799\n\"182\"\n183\n61\n0\n17\n443\nnull\n15438\n2826\n0\n1825\n31164\n\n\n\"ORD\"\n\"Chicago, IL: Chicago O'Hare In…\n\"December\"\n2015\n25568\n\"923\"\n1755\n1364\n11\n180\n4233\n80962\n132055\n72045\n435\n22459\n307956\n\n\n\"SAN\"\n\"San Diego, CA: San Diego Inter…\n\"n/a\"\n2015\n6231\n\"480\"\n606\n256\n5\n37\n1383\n25402\n35796\n9038\n161\n2742\n73139\n\n\n\"SFO\"\n\"San Francisco, CA: San Francis…\n\"December\"\n2015\n13833\n\"757\"\n1180\n2372\n9\n147\n4465\n55283\n96703\n193525\n285\n13788\n359584\n\n\n\"SLC\"\n\"Salt Lake City, UT: Salt Lake …\n\"December\"\n2015\n8804\n\"483\"\n796\n404\n5\n56\n1745\n37354\n49549\n13515\n158\n6693\n107269",
+    "crumbs": [
+      "Data Exploration",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html#question-1",
+    "href": "Cleansing_Exploration/project1.html#question-1",
+    "title": "Client Report - Flights: Column Aggregation",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nWhich airport has the worst delays? Describe the metric you chose, and why you chose it to determine the “worst” airport. Your answer should include a summary table that lists (for each airport) the total number of flights, total number of delayed flights, proportion of delayed flights, and average delay time in hours.\n\nBy using the group by for the airport name we can then do the calculations for all 4 columns givin in the question.\n\n\nShow the code\n# Include and execute your code here\ndelays = (\n  df.group_by('airport_name')\n  .agg(\n    pl.col('num_of_flights_total').sum().alias('Total_flights'),  #total number of flights\n    pl.col('num_of_delays_total').sum().alias('Total_delays'),   #total number of delayed flights\n    (pl.col('num_of_delays_total').sum() / pl.col('num_of_flights_total').sum()).alias('proportion_delayed'),    #proportion of delayed flights\n    ((pl.col('minutes_delayed_total').sum() / pl.col('num_of_flights_total').sum()) / 60).alias('avg_delay_hours'),   #average delay time in hours.\n  )\n)\ndelays\n\n\n\nshape: (8, 5)\n\n\n\nairport_name\nTotal_flights\nTotal_delays\nproportion_delayed\navg_delay_hours\n\n\nstr\ni64\ni64\nf64\nf64\n\n\n\n\n\"Salt Lake City, UT: Salt Lake …\n1293072\n190733\n0.147504\n0.121943\n\n\n\"Chicago, IL: Chicago O'Hare In…\n3400032\n773122\n0.227387\n0.255709\n\n\n\"\"\n884879\n172413\n0.194844\n0.199876\n\n\n\"San Diego, CA: San Diego Inter…\n870161\n167747\n0.192777\n0.151743\n\n\n\"Atlanta, GA: Hartsfield-Jackso…\n4235114\n870910\n0.20564\n0.205091\n\n\n\"Washington, DC: Washington Dul…\n773480\n152630\n0.197329\n0.200878\n\n\n\"Denver, CO: Denver Internation…\n2323376\n439964\n0.189364\n0.169728\n\n\n\"San Francisco, CA: San Francis…\n1565257\n408631\n0.261063\n0.2714",
+    "crumbs": [
+      "Data Exploration",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html#question-2",
+    "href": "Cleansing_Exploration/project1.html#question-2",
+    "title": "Client Report - Flights: Column Aggregation",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nCreate a barplot showing the proportion of all flights that are delayed at each airport. Describe what you learn from this graph.\nAs for this bar chart one can see that there are noticable differences when it come to delays. The airports that has the most delays are Atlanta and Chicago. Whereas, San Fransico and Denver seem to hold the middle ground, and the rest are relativly low. One would have to guess that the airport with less delays are significantly smaller than those with more delays.\n\n\nShow the code\n# Include and execute your code here\n(\n  ggplot(delays, aes(x='airport_name', y='Total_delays'))\n  +geom_bar(stat='identity') #the stat= identity gives us the proper values\n  +theme(\n    axis_text_x=element_text(angle=20), \n    plot_title=element_text(size=25))\n  +labs(title='Flights that are delayed at each airport')\n)",
+    "crumbs": [
+      "Data Exploration",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
+    "title": "Client Report - Flights: Creating New Columns",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport requests #new for reading in JSON\nimport io       #new for reading in JSON\nimport numpy as np\nfrom lets_plot import *\nimport polars.selectors as cs #for using the selctors\n\nLetsPlot.setup_html(isolated_frame=True)\n\n\n\n\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\nurl = \"https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json\"\nresponse = requests.get(url)\ndf = pl.read_json(io.BytesIO(response.content))\n\n\nThis is our cleaned data that we are going to be using\n\n\nShow the code\ncleaned = df.with_columns(\n  # cs stands for column selectors\n  cs.string().replace(\"1500+\", None),\n  cs.numeric().replace(-999, None)\n)\n\ncleaned[0].to_dicts()\n\n\n[{'airport_code': 'ATL',\n  'airport_name': 'Atlanta, GA: Hartsfield-Jackson Atlanta International',\n  'month': 'January',\n  'year': 2005,\n  'num_of_flights_total': 35048,\n  'num_of_delays_carrier': None,\n  'num_of_delays_late_aircraft': None,\n  'num_of_delays_nas': 4598,\n  'num_of_delays_security': 10,\n  'num_of_delays_weather': 448,\n  'num_of_delays_total': 8355,\n  'minutes_delayed_carrier': 116423,\n  'minutes_delayed_late_aircraft': 104415,\n  'minutes_delayed_nas': 207467,\n  'minutes_delayed_security': 297,\n  'minutes_delayed_weather': 36931,\n  'minutes_delayed_total': 465533}]\n\n\n\n1. Which delay is the worst delay? Keep working with the cleaned dataset you created in the previous task. Compare the proportion of flights delayed due to Carrier, to Security, and to Late Aircraft. Show this comparison in a Chart and a Table. Describe your results.\nAfter creating a bar chart comapring the sums of each cause for delays and comparing them to eachother it is very easy to see that the main cause for delays is late aircrafts. As we can see late aircraft is responsible for 62% of the delays, whereas carrier is responsible for 37%, and security is the 0.32% of delays\n\n\nShow the code\ntotal_delays = cleaned.select([\n    pl.col(\"num_of_delays_carrier\").cast(pl.Int64).sum().alias(\"carrier\"),\n    pl.col(\"num_of_delays_security\").cast(pl.Int64).sum().alias(\"security\"),\n    pl.col(\"num_of_delays_late_aircraft\").cast(pl.Int64).sum().alias(\"late_aircraft\")\n])\n\n# Convert wide to long\ndelays_long = total_delays.unpivot(\n    index=[],  # no identifier needed, just sum everything\n    on=[\"carrier\", \"late_aircraft\", \"security\"],\n    variable_name=\"delay_type\",\n    value_name=\"count\"\n).with_columns(\n  proportion = pl.col(\"count\") / pl.col(\"count\").sum()\n)\ndelays_long\n\n\n\nshape: (3, 3)\n\n\n\ndelay_type\ncount\nproportion\n\n\nstr\ni64\nf64\n\n\n\n\n\"carrier\"\n588292\n0.373816\n\n\n\"late_aircraft\"\n980448\n0.623003\n\n\n\"security\"\n5006\n0.003181\n\n\n\n\n\n\n\n\nShow the code\n(\n  ggplot(delays_long, aes(x=\"delay_type\", y=\"proportion\", fill=\"delay_type\"))\n  +geom_bar(stat='identity')\n  +labs(\n    title = \"Proportion of Delays by Cause\",\n    y = \"Proportion\",\n    x= \"Delay type\"\n\n  )\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\n2. Create another chart that shows the proportion of delays for each reason (Carrier, Security, and Late Aircraft) across all 7 airports. Describe your results.\nCreate another chart that shows the proportion of delays for each reason (Carrier, Security, and Late Aircraft) across all 7 airports. After doing this results as seen in the graph, same as before most delays are due to the late aircraft, then the carrier. As for security, it has an overwelming small effect that it doesn’t even show up in the graph.\n\n\nShow the code\n# Step 1: sum delays per airport\ndelays_per_airport = (\n    cleaned.group_by(\"airport_code\")  \n    .agg([\n      pl.col(\"num_of_delays_carrier\").cast(pl.Int64).sum().alias(\"carrier\"),\n      pl.col(\"num_of_delays_late_aircraft\").cast(pl.Int64).sum().alias(\"late_aircraft\"),\n      pl.col(\"num_of_delays_security\").cast(pl.Int64).sum().alias(\"security\")\n    ])\n)\n\n# Step 2: convert wide -&gt; long using unpivot (same style as total_delays)\ndelays_long_per_airport = delays_per_airport.unpivot(\n    index=[\"airport_code\"],  # keep airport_code as identifier\n    on=[\"carrier\", \"late_aircraft\",\"security\"],\n    variable_name=\"delay_type\",\n    value_name=\"Count\"\n).with_columns(\n  proportion = pl.col(\"Count\") / pl.col(\"Count\").sum().over(\"airport_code\")\n)\n\n\n\n\nShow the code\n(\n  ggplot(delays_long_per_airport, aes(x=\"airport_code\", y=\"proportion\", fill=\"delay_type\"))\n  +geom_bar(stat=\"identity\", position=\"dodge\")\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Exploration",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html",
+    "href": "Cleansing_Projects/project1.html",
+    "title": "Client Report - What’s in a Name?",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\nShow the code\n# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html\n\n# Include and execute your code here\ndf = pl.read_csv(\"/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv\")",
     "crumbs": [
       "Data Cleansing",
-      "Project 2"
+      "Project 1"
     ]
   },
   {
-    "objectID": "full_stack.html",
-    "href": "full_stack.html",
-    "title": "Full-Stack Projects",
-    "section": "",
-    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\n[You can view the full project on the sidebar to your left]\n\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n[You can view the full projects on the sidebar to your left]\n\n\n\n\n Back to top",
+    "objectID": "Cleansing_Projects/project1.html#question-1",
+    "href": "Cleansing_Projects/project1.html#question-1",
+    "title": "Client Report - What’s in a Name?",
+    "section": "QUESTION 1",
+    "text": "QUESTION 1\n\nHow does your name at your birth year compare to its use historically? Your must provide a chart. The years labels on your charts should not include a comma.\nAfter filtering out all the names besides my own, I then created a graph to compare it’s popluarity over time. As seen in the graph the red line represents the year I was born which is 2006. Before the year 2005 ‘Ash’ was a very unique name that very few people had, but after I was born it’s popularity has been continously growing as the years go by.\n\n\nShow the code\n# Q1\n# 1. Filter for the name\nash = df.filter(pl.col(\"name\") == \"Ash\")\nbirth_year = 2006  # Let's use 'birth_year' consistently\n\n# 3. Create the chart\n(\n  ggplot(ash, aes(x=\"year\", y=\"Total\"))\n  + geom_line(color=\"blue\", size=1)\n  # Use birth_year here to match your variable above\n  + geom_vline(xintercept=birth_year, linetype=\"dashed\", color=\"red\")\n  + scale_x_continuous(format=\"d\")\n  + labs(\n    title=\"Historical Popularity of the Name 'Ash'\", \n    x=\"Year\", \n    y=\"Births\")\n)",
     "crumbs": [
-      "Full Stack"
+      "Data Cleansing",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html#question-2",
+    "href": "Cleansing_Projects/project1.html#question-2",
+    "title": "Client Report - What’s in a Name?",
+    "section": "QUESTION 2",
+    "text": "QUESTION 2\nThink of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?\nI decided to chose the name Elsa. It’s a very unique name, but after the movie Frozen came out I was curious how it had affected people. And as you can clearly see the spike in it’s popularity is astonding because the movie was released november 2013, and because of that I made the line in the year 2014, because it was basically released then.\n\n\nShow the code\n# Q2\n# frozen was released november 2013 so lets look 2014\nelsa = df.filter(pl.col(\"name\") == \"Elsa\")\nrelease = 2014\n\n\n(\n  ggplot(elsa, aes(x=\"year\", y=\"Total\"))\n  +geom_line(color=\"purple\", size=1)\n  +geom_vline(xintercept=release, linetype=\"dashed\", color=\"green\")\n  +scale_x_continuous(format=\"d\")\n  +labs(\n    title=\"Trend of the name Elsa, Frozen came out 2014\",\n    x=\"Year\",\n    y=\"Births\"\n  )\n)",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project1.html#question-3",
+    "href": "Cleansing_Projects/project1.html#question-3",
+    "title": "Client Report - What’s in a Name?",
+    "section": "QUESTION 3",
+    "text": "QUESTION 3\nMary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice?\nA trend that I’ve noticed with their names is that Mary greatly outweighed the other names up until 1970. This makes sense considering Mary is the name of Jesus’s mother, thus giving it a more holy meaning. Whereas Paul although not as popluar as Mary continuouls stay’s in second throughout the timeline given. And as we reach the 1970 and further the names then start to even out in popularity\n\n\nShow the code\n# Q3\n\nnames_to_find = [\"Mary\", \"Martha\", \"Peter\", \"Paul\"]\n\nnames= df.filter(\n  (pl.col(\"name\").is_in(names_to_find)) &\n  (pl.col(\"year\") &gt;= 1920) &\n  (pl.col(\"year\") &lt;= 2000)\n)\n\n\n(\n  ggplot(names, aes(x=\"year\", y=\"Total\", color = \"name\")) \n  +geom_line(size = 1)\n  +scale_x_continuous(format=\"d\")\n  +labs(\n    title = \"Christian names from 1920 - 2000\",\n    x = \"Year\",\n    y= \"Number\",\n    color = \"Name\"\n  )\n  \n)",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
+    "title": "Client Report - Elliot",
+    "section": "",
+    "text": "Show the code\nimport polars as pl\nimport numpy as np\nfrom lets_plot import *\n\nLetsPlot.setup_html(isolated_frame=True)\n\n\n\n\nShow the code\ndf = pl.read_csv(\"/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv\")\n\n\n\nFamous movies with the name Elliot\nE.T which released 1982\nGet a Life which released 1990, although the charcaters name wasn’t Elliot, the actor Chris Elliott was a big hit.\nMr. Robot which released it’s finale in 2019\n\n\nShow the code\nelliot = df.filter(pl.col('name') == 'Elliot')\n\n(\n  ggplot(elliot, aes(x='year', y='Total'))\n  +geom_line(aes(color='name'),size=1,)\n  +scale_color_manual(values={'Elliot':'blue'})\n\n  +scale_x_continuous(format='d')\n  +geom_vline(xintercept=1982, color=\"red\", linetype='dashed')\n  +geom_vline(xintercept=1990, color=\"red\", linetype='dashed')\n  +geom_vline(xintercept=2019, color=\"red\", linetype='dashed')\n\n  +geom_text(x=1965, y=3000, label=\"E.T released (1982)\")\n  +geom_text(x=1979, y=2000, label=\"Get a life(1990)\")\n  +geom_text(x=2005, y=250, label=\"Mr.Robot(2019)\")\n  \n  +labs(title=\"Elliot...What?\")\n  +theme(legend_position='right')\n\n)\n\n\n\n   \n       \n       \n       \n   \n   \n          \n   \n   \n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 3"
     ]
   }
 ]
