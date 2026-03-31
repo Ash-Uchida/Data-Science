@@ -17,7 +17,7 @@ Aspiring Software Engineer and Data Analyst
 I'm a student at Brigham Young University - Idaho 
 
 
-### Specializing in 
+#### Specializing in 
 
 Bachelor of Computer Science
 Minor of Data Science
@@ -25,7 +25,7 @@ Certificate in Cyber Security
 
 
 
-### Research interests
+#### Research interests
 
 Ham radio, Cloud Computing, Databases
 
@@ -51,9 +51,9 @@ Huron Heights Secondary School Honor Roll
 
 
 
-### Projects
+## Projects
 
-##### HackUSU 
+#### HackUSU 
 `Feb 27-28 2026`
 Built a governed analytics platform (“Sales Dashboard Factory
 ”) in a 17-hour hackathon sprint, earning 2nd place in the
@@ -63,7 +63,7 @@ queries using Databricks and Unity Catalog.
 Collaborated in a fast-paced team environment to design role-based data access, implement SQL guardrails, and deploy a
 scalable, secure data solution.
 
-##### Zoom Zone - Personal Project
+#### Zoom Zone - Personal Project
 `Dec 2025 – Jan 2026`
 Developed a full stack scheduling platform that automated 100% of meeting creation by integrating Google Calendar and
 Zoom APIs to eliminate double booking.
@@ -72,7 +72,7 @@ persistence for all user bookings.
 Implemented a Calendly-style booking interface that displays real-time availability and allows users to schedule meetings
 through a guided flow.
 
-##### Secretary of the Hackathon Society 
+#### Secretary of the Hackathon Society 
 `Feb 2025 – Nov 2025`
 Facilitated team alignment by documenting committee discussions and distributing action items to ensure all project goals
 were met.

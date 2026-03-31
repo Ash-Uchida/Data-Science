@@ -1,10 +1,35 @@
 ---
-title: "about me"
-subtitle: "my data science portfolio"
-# use quarto markdown to 
+title: "My Journey in Data Science Programming"
+subtitle: "My Data Science Portfolio"
+
 ---
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## Ash Uchida
+### Aspiring Software Engineer & Data Analyst
+
+### Software Engineering | Data Science | Cybersecurity
+
+I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.
+
+Currently a Computer Science student at BYU-Idaho with a 4.0 GPA.
+
+- 🎓 BYU-Idaho — 4.0 GPA  
+- 🏆 2nd Place Hackathon Winner  
+- 💻 Full-Stack & Data Science Projects  
+- 🔐 Cybersecurity Certificate  
+
+## Featured Work
+
+#### Hackathon Winner (2nd Place)
+Built a secure analytics platform that converts natural language into validated SQL using AI and Databricks, enabling users to safely query data without writing SQL.
+
+#### Zoom Zone
+Developed a full-stack scheduling platform integrating Google Calendar and Zoom APIs, allowing users to automate meeting creation and avoid scheduling conflicts.
+
+
+## About Me
+I’m a Computer Science student with a passion for building applications and working with data. I enjoy creating full-stack projects, exploring machine learning, and solving real-world problems.
+
+Outside of tech, I enjoy snowboarding, painting murals, and staying active outdoors.
+
