@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Flights: Creating New Columns"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,140 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import requests #new for reading in JSON
+import io       #new for reading in JSON
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+url = "https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json"
+response = requests.get(url)
+df = pl.read_json(io.BytesIO(response.content))
+df
+```
+
+## QUESTION 1
+
+1. __Create a new 'season' column.__ Define 'season' as:
+    1. Winter for January, Febuary (note the mispelling), March
+    1. Spring for April, May, June
+    1. Summer for  July, August, September
+    1. Fall for October, November, December
+    1. All other rows can be assigned a value of 'Unknown' 
+
+_No discussion needed for this question_
+
+```{python}
+# Include and execute your code here
+seasons = df.with_columns(
+  seasons = pl.when(pl.col('month').is_in(['January','Febuary','March']))
+    .then(pl.lit('Winter'))
+    .when(pl.col('month').is_in(['April','May','June']))
+    .then(pl.lit('Spring'))
+    .when(pl.col('month').is_in(['July','August','September']))
+    .then(pl.lit('Summer'))
+    .when(pl.col('month').is_in(['October','November','December']))
+    .then(pl.lit('Fall'))
+    .otherwise(pl.lit('Unknown'))
+)
+seasons
+```
+
+
+## QUESTION 2
+
+1. __Divide all the columns by 1000 whose name starts with num_of.__ Be sure to first filter out rows that contain problematic values for the columns like -999 or 1500+.
+
+_No discussion needed for this question_
+
+```{python}
+# Include and execute your code here
+df_clean = (
+    seasons.with_columns(
+        pl.col("^num_of.*$")
+        .cast(pl.String)               # ensure string can use string or utf8
+        .str.replace(r"\+", "")        # remove + 
+        .cast(pl.Float64)              # back to number
+    )
+    .filter(
+        pl.all_horizontal(
+            (pl.col("^num_of.*$") != 999) &
+            (pl.col("^num_of.*$") != 1500)
+        )
+    )
+    .with_columns(
+        (pl.col("^num_of.*$") / 1000)
+    )
+)
+df_clean
+```
+
+<!-- Another way to do this -->
+.with_columns : which updates/adds columns
+^ .* $ : WHich is a regular expression , period star means zero to many
+
+## QUESTION 3
+
+1. According to the BTS website, the “Weather” category only accounts for severe weather delays. Mild weather delays are not counted in the “Weather” category, but are actually included in both the “nas” and “late_aircraft” categories. __Using the columns you modified in the bullet above, your job is to create a new column that calculates the total number of flights (in 1,000's) delayed by weather (both severe and mild).__ Show your work by printing the first 5 rows of the dataset. Use these three rules for your calculations:  
+
+    a. 100% of delayed flights in the Weather category are due to weather  
+      num_of_delays_weather
+      
+    a. 30% of all delayed flights in the "late_aircraft" category are due to weather  
+      num_of_delays_late_aircraft
+
+    a. From April through August, 40% of delayed flights in the NAS category are due to weather. The rest of the months, the proportion rises to 65%  
+      num_of_delays_nas
+      April–August → 40%
+      All other months → 65%
+
+_No discussion needed for this question_
+
+```{python}
+# Include and execute your code here
+# weather_total =
+#     num_of_delays_weather
+#   + 0.30 * num_of_delays_late_aircraft
+#   + NAS_factor * num_of_delays_nas
+
+delays = df_clean.with_columns(
+  Delay_Calculation = pl.col('num_of_delays_weather') 
+    + (pl.col('num_of_delays_late_aircraft') * 0.30) 
+    +( pl.when(pl.col('month').is_in(['April', 'May', 'June', 'July', 'August']))
+      .then(0.40 * pl.col('num_of_delays_nas'))
+      .otherwise(0.65 * pl.col('num_of_delays_nas'))
+    )
+)
+
+delays.head(5)
+```
+
+## QUESTION 4
+
+1. __Using the new weather variable calculated above, create a boxplot showing the distribution of flights delayed by weather for each season. Describe what you learn from this graph.__    
+
+_This is using the boxplot method to show the correlation between the seasons and delayed flights using the previous calculations made above_
+
+```{python}
+# Include and execute your code here
+(
+  ggplot(delays, aes(x='seasons', y='Delay_Calculation', fill='seasons'))
+  +geom_boxplot()
+  +labs(
+    title = "Correlation between weather and flights"
+  )
+  +flavor_darcula()
+
+)
+
+```

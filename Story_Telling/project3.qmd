@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Joins"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,77 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+conn = sqlite3.connect(sqlite_file)
+```
+
+## QUESTION 1
+
+__Write an SQL query that pulls in the the salaries table and the collegeplaying table (and any other tables you might need) and store them in polars dataframes. In Python Polars, combine the dataframes to create a list of baseball players who attended BYU-Idaho. The new table should contain five columns: playerID, schoolID, salary, yearID and teamID associated with each salary.__
+
+_After creating this table of data one can see that there is quite a handful of players who originate from BYU-I. But the main trend that I've noticed throughout this table is the continually increasing salary after every year regardless of which team the players from._
+
+```{python}
+q = ''' SELECT playerID, salary, yearID, teamID FROM salaries '''
+salaries = pl.read_database(q, conn)
+q = ''' SELECT playerID, schoolID FROM collegeplaying '''
+collegeplaying = pl.read_database(q, conn).unique()
+```
+```{python}
+# Include and execute your code here
+collegeplaying.join(salaries, 
+      on=["playerID"],
+      how="inner").filter(pl.col('schoolID') == 'idbyuid')
+
+```
+
+
+
+## QUESTION 2
+
+__1. Pick any two baseball teams and compare them using a metric of your choice (average salary, home runs, number of wins, etc). Be creative! Write an SQL query to read in the table(s) you need, then use polars to manipulate the data. Finally, make a graph using Lets-Plot to visualize the comparison. What do you learn?__ 
+
+_I decided to compare the Philies to the Cardinals using the metric salary. After taking a step back and looking at the comparison one would feel that there really isn't much of a difference. But in reality the difference between their averages is $110,000! If I had to chose a team to play on I would go with the Phillies because that is quite a bonus in comparison to the Cardinals_
+
+
+```{python}
+# Include and execute your code here
+q='''
+SELECT teamID, AVG(salary) AS 'Avg_salary' FROM salaries WHERE teamID IN('PHI', 'SLN') GROUP BY teamID
+'''
+salaries = pl.read_database(q, conn)
+
+salaries=salaries.with_columns(
+  pl.when(pl.col('teamID') == 'PHI').then(pl.lit("Phillies"))
+  .otherwise(pl.lit('Cardinals')).alias("renamedTeamID")
+)
+
+(
+  ggplot(salaries,aes(x='renamedTeamID', y='Avg_salary'))
+  +geom_bar(stat='identity')
+  +labs(
+    title='Comparision of Salaries',
+    x='The teams',
+    y='Salary average'
+  )
+)
+
+
+```
+
+

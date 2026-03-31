@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Baseball Database SQL Query"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,114 @@ execute:
     
 ---
 
-### Paste in a template
+
+```{python}
+import polars as pl
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+con = sqlite3.connect(sqlite_file)
+```
+
+## QUESTION 1
+
+__Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.__
+
+__These first 2 tables just helps me see what's inside my database__
+
+```{python}
+# Query to see all tables
+tables_query = "SELECT name FROM sqlite_master WHERE type='table';"
+tables = pl.read_database(tables_query, con)
+print(tables)
+```
+
+```{python}
+# Check the column names for the batting table
+check_cols = "PRAGMA table_info('batting');"
+print(pl.read_database(check_cols, con))
+```
+
+```{python}
+# Include and execute your code here
+
+# The code below can serve as a template for all the rest of your queries. It is just missing the
+# SQL code. Put your SQL query in between the triple quotation marks to create the query. The records will be stored in 'results', which is a polars data frame
+
+q = """
+  SELECT 
+    playerID, 
+    yearID, 
+    (1.0 * H)/AB AS 'Batting_avg' 
+  FROM batting
+  WHERE AB >= 1
+  ORDER BY Batting_avg desc, playerID asc
+  LIMIT 5
+    """
+results = pl.read_database(q, con)
+results
+
+
+```
+
+
+## QUESTION 2
+
+__Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.__  
+
+_We just need to the change the num for the where part_
+
+```{python}
+# Include and execute your code here
+q = """
+  SELECT 
+    playerID, 
+    yearID, 
+    (1.0 * H)/AB AS 'Batting_avg' 
+  FROM batting
+  WHERE AB >= 10
+  ORDER BY Batting_avg desc, playerID asc
+  LIMIT 5
+    """
+results = pl.read_database(q, con)
+results
+
+```
+
+
+## QUESTION 3
+
+__Now modify the SQL query to calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats over their entire career, and print the top 5 results.__
+
+_For here we need to make sure that we use having and not where when filtering the AB > 100 when we are lookinng at the sum_
+
+```{python}
+# Include and execute your code here
+
+q = """
+  SELECT 
+    playerID, 
+    yearID, 
+    ROUND((1.0 * SUM(H) / SUM(AB)), 3 ) AS 'Batting_avg' 
+  FROM batting
+  GROUP BY playerID
+  HAVING SUM(AB) >= 100
+  ORDER BY Batting_avg desc, playerID asc
+  LIMIT 5
+    """
+results = pl.read_database(q, con)
+results
+
+
+```

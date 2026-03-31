@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Flights: Creating New Columns"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,111 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import requests #new for reading in JSON
+import io       #new for reading in JSON
+import numpy as np
+from lets_plot import *
+import polars.selectors as cs #for using the selctors
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+url = "https://raw.githubusercontent.com/byuidatascience/data4missing/master/data-raw/flights_missing/flights_missing.json"
+response = requests.get(url)
+df = pl.read_json(io.BytesIO(response.content))
+
+
+```
+
+_This is our cleaned data that we are going to be using_
+```{python}
+cleaned = df.with_columns(
+  # cs stands for column selectors
+  cs.string().replace("1500+", None),
+  cs.numeric().replace(-999, None)
+)
+
+cleaned[0].to_dicts()
+
+```
+
+### 1. Which delay is the worst delay? Keep working with the cleaned dataset you created in the previous task. Compare the proportion of flights delayed due to Carrier, to Security, and to Late Aircraft. Show this comparison in a Chart and a Table. Describe your results.
+
+_After creating a bar chart comapring the sums of each cause for delays and comparing them to eachother it is very easy to see that the main cause for delays is late aircrafts. As we can see late aircraft is responsible for 62% of the delays, whereas carrier is responsible for 37%, and security is the 0.32% of delays_
+
+```{python}
+
+total_delays = cleaned.select([
+    pl.col("num_of_delays_carrier").cast(pl.Int64).sum().alias("carrier"),
+    pl.col("num_of_delays_security").cast(pl.Int64).sum().alias("security"),
+    pl.col("num_of_delays_late_aircraft").cast(pl.Int64).sum().alias("late_aircraft")
+])
+
+# Convert wide to long
+delays_long = total_delays.unpivot(
+    index=[],  # no identifier needed, just sum everything
+    on=["carrier", "late_aircraft", "security"],
+    variable_name="delay_type",
+    value_name="count"
+).with_columns(
+  proportion = pl.col("count") / pl.col("count").sum()
+)
+delays_long
+```
+
+```{python}
+(
+  ggplot(delays_long, aes(x="delay_type", y="proportion", fill="delay_type"))
+  +geom_bar(stat='identity')
+  +labs(
+    title = "Proportion of Delays by Cause",
+    y = "Proportion",
+    x= "Delay type"
+
+  )
+)
+```
+
+
+### 2. Create another chart that shows the proportion of delays for each reason (Carrier, Security, and Late Aircraft) across all 7 airports. Describe your results.
+
+_Create another chart that shows the proportion of delays for each reason (Carrier, Security, and Late Aircraft) across all 7 airports. After doing this results as seen in the graph, same as before most delays are due to the late aircraft, then the carrier. As for security, it has an overwelming small effect that it doesn't even show up in the graph._
+
+```{python}
+
+# Step 1: sum delays per airport
+delays_per_airport = (
+    cleaned.group_by("airport_code")  
+    .agg([
+      pl.col("num_of_delays_carrier").cast(pl.Int64).sum().alias("carrier"),
+      pl.col("num_of_delays_late_aircraft").cast(pl.Int64).sum().alias("late_aircraft"),
+      pl.col("num_of_delays_security").cast(pl.Int64).sum().alias("security")
+    ])
+)
+
+# Step 2: convert wide -> long using unpivot (same style as total_delays)
+delays_long_per_airport = delays_per_airport.unpivot(
+    index=["airport_code"],  # keep airport_code as identifier
+    on=["carrier", "late_aircraft","security"],
+    variable_name="delay_type",
+    value_name="Count"
+).with_columns(
+  proportion = pl.col("Count") / pl.col("Count").sum().over("airport_code")
+)
+
+```
+
+```{python}
+(
+  ggplot(delays_long_per_airport, aes(x="airport_code", y="proportion", fill="delay_type"))
+  +geom_bar(stat="identity", position="dodge")
+)
+```

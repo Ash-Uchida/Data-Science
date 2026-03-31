@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Famous Names"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,99 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pl.read_csv("/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv")
+```
+
+
+
+## QUESTION 1
+
+<!-- Make sure at least one of your charts includes reference marks!! -->
+
+__Make a new column that represents the total number of babies with your name for only those states in which you have lived. (If you have only ever lived in one state, pick at least one other state so you get practice summing across columns). Make a graph displaying that total for your name over time.__
+
+_First I need to filter my name out of the file, then select my name from the states I've lived which is AZ and ID_
+
+```{python}
+# Q1
+ash = df.filter(pl.col("name") == "Ash")
+states = ash.with_columns(
+  (pl.col("AZ") + pl.col("ID")).alias("total")
+)
+
+(
+  ggplot(states, aes(x="year", y="total"))
+  +geom_line(color="blue", size=1)
+  +scale_x_continuous(format="d")
+  +geom_vline(xintercept=2024, color="red", linetype=2)
+  +geom_text(x=2023, y= -1, color='red', hjust=1, label="When I first came to Idaho (2024)")
+)
+
+```
+
+
+## QUESTION 2
+
+1. __Let's look at a name that is special for members of the church: Brigham. For each year, calculate what proportion of babies named Brigham were born in Idaho and Utah? Make a graph displaying the proportion over time.__  
+
+_First we filter out the name brigam and calculate it's percent, and then we plot out the names popularity throughout the years. We can see a gaint spike down in the year 1992_
+
+```{python}
+# Q2
+
+brig = df.filter(pl.col("name") == "Brigham")
+states_percent = brig.with_columns(
+  ((pl.col("UT") + pl.col("ID"))/pl.col("Total")).alias("percent")
+)
+
+(
+  ggplot(states_percent, aes(x="year", y="percent"))
+  +scale_x_continuous(format="d")
+  +geom_line(color="blue", size =1)
+  +labs(
+    title="Name in Brigham born in Idaho and Utah percent",
+    x="Year",
+    y="Percent"
+  )
+)
+
+
+```
+
+<!-- Make sure at least one of your charts includes reference marks!! -->
+
+## QUESTION 3
+
+1. __Consider doing some data validation. For the name David, calculate a sum of all 50 states and District of Columbia for each year. Now compare that total to the value in the 'Total' column. In which years, if any, do they not agree?__
+
+_First we filter out the name David, then we total the states. which would be to add all the columns excluding the name, year, and total columns. saving this total as a new column called state_sum. then we find where our calculation doesn't match the total calculation_
+
+```{python}
+# Q3
+david = df.filter(pl.col("name") == "David")
+
+sum = david.with_columns(
+    pl.sum_horizontal(pl.exclude("name", "year", "Total")).alias("state_sum")
+)
+
+not_match = sum.filter(pl.col("state_sum") != pl.col("Total"))
+
+if not_match.height > 0:
+  print("the years where they don'y agree:")
+  print(not_match.select("year", "state_sum", "Total"))
+else:
+  print("They all match!")
+
+```

@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Baseball Database"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,132 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import numpy as np
+import sqlite3
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+sqlite_file = 'lahmansbaseballdb.sqlite'
+# this file must be in the same location as your .qmd or .py file
+con = sqlite3.connect(sqlite_file)
+```
+
+```{python}
+# Include and execute your code here
+
+# The code below uses some basic SQL code to read in the entire 'batting' table in the database and store it in a polars dataframe called 'results'. You must write polars code to manipulate the results dataframe to address the task.
+
+q = """
+    SELECT *
+    FROM batting
+    """
+results = pl.read_database(q, con, infer_schema_length=None) 
+# What does infer_schema_length = None do?
+results
+
+```
+
+
+## QUESTION 1
+
+__Use the provided code above to read in the batting table. Then, with Python Polars manipulate the 'results' dataframe to calculate the number of at bats and the batting average for each year a player played. Filter the data frame to only include players with at least 10 at bats that year. Sort the dataframe from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.__
+
+Note: A batting average is meant to measure how often a player puts the ball in play and gets to base safely. For this task, use a simplified version of batting average defined as the sum of hits (labeled 'H') divided by number of at bats (labeled 'AB').
+
+_The top 5 players are: Nyls Wallace Rex, Matthew Reese, David Tilden, Charles Anthony Ryan and George Lawrence _
+
+```{python}
+# Include and execute your code here
+best_batting = (
+  results.group_by(['playerID', 'yearID'])
+          .agg(
+            pl.col('AB').sum(),
+            (pl.col('H').sum() / pl.col('AB').sum()).alias('batting_avg')
+          )
+)
+best_batting.filter(pl.col('AB') >= 10).sort(by=['batting_avg', 'playerID'], descending=[True, False]).head(5)
+
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'nymanny01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'carsoma01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'altizda01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'silvech01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'puccige01')
+```
+
+
+## QUESTION 2
+
+__Use the provided code above to read in the batting table. Then, with Python Polars manipulate the 'results' dataframe to calculate the batting average for each player over their entire career (all years combined). Only include players with at least 100 at bats over their entire career. Sort the dataframe from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.__ 
+
+Note: A batting average is meant to measure how often a player puts the ball in play and gets to base safely. For this task, use a simplified version of batting average defined as the sum of hits (labeled 'H') divided by number of at bats (labeled 'AB').
+
+_Our top 5 this time are Tyrus Raymond, Charles Roscoe, Rogers Hornsby, Joseph Walker and Levi Samuel  _
+
+```{python}
+# Include and execute your code here
+best_batting = (
+  results.group_by(['playerID'])
+          .agg(
+            pl.col('AB').sum(),
+            (pl.col('H').sum() / pl.col('AB').sum()).alias('batting_avg')
+          )
+)
+best_batting.filter(pl.col('AB') >= 100).sort(by=['batting_avg', 'playerID'], descending=[True, False]).head(5)
+
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'cobbty01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'barnero01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'hornsro01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'jacksjo01')
+```
+```{python}
+q = '''SELECT * from people'''
+players = pl.read_database(q, con)
+players.filter(pl.col('playerID') == 'meyerle01')
+```
+
+

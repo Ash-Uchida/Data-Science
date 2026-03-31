@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Stretch"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,152 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import numpy as np
+from lets_plot import *
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+import requests
+import io
+import polars.selectors as cs
+import os
+import certifi
+import ssl
+# add the additional libraries you need to import for ML here
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+```{python}
+# Load the main dwellings data
+dwellings = pl.read_csv("dwellings_ml.csv")
+neighborhoods = pl.read_csv("dwellings_neighborhoods_ml.csv")
+
+ctx = pl.SQLContext( dwellings=dwellings, neighborhoods=neighborhoods)
+```
+
+
+#### 1. Join the dwellings_neighborhoods_ml.csv data to the dwelling_ml.csv on the parcel column to create a new dataset. Duplicate the code for the model you recommended in the previous taskn above and update it to use this data. Explain the differences and if this changes the model you recomend to the Client.
+
+_Yes I would recommd this model over the previous model because the accuracy from this report is higher than the previous report. Which makes sense because for this report we combined 2 datasets, and the more data one has the more accurate one becomes._
+
+This was the previous reports accuracy:
+
+| Class | Precision | Recall | F1-Score | Support |
+|------:|----------:|-------:|---------:|--------:|
+| 0     | 0.86      | 0.87   | 0.87     | 1690    |
+| 1     | 0.92      | 0.92   | 0.92     | 2893    |
+|------:|----------:|-------:|---------:|--------:|
+| Accuracy |        |        | 0.90     | 4583    |
+| Macro Avg | 0.89  | 0.89   | 0.89     | 4583    |
+| Weighted Avg | 0.90 | 0.90 | 0.90     | 4583    |
+
+And this is the current reports accuracy:
+
+| Class | Precision | Recall | F1-Score | Support |
+|------:|----------:|-------:|---------:|--------:|
+| 0     | 0.94      | 0.95   | 0.94     | 2134    |
+| 1     | 0.97      | 0.96   | 0.96     | 3459    |
+|------:|----------:|-------:|---------:|--------:|
+| Accuracy |        |        | 0.96     | 5593    |
+| Macro Avg | 0.95  | 0.96   | 0.95     | 5593    |
+| Weighted Avg | 0.96 | 0.96 | 0.96     | 5593    |
+
+
+
+```{python}
+joinedData = '''
+SELECT d.*, n.* exclude(parcel)
+FROM dwellings d
+    JOIN neighborhoods n 
+        ON d.parcel = n.parcel
+'''
+df = ctx.execute(joinedData).collect()
+
+df
+```
+```{python}
+x = df.select((cs.numeric()).exclude(["before1980","yrbuilt"]))
+y = df.select('before1980')
+
+```
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, random_state=12394, train_size=.8)
+
+```
+
+```{python}
+from sklearn.tree import DecisionTreeClassifier
+# Use .to_series() to flatten the target column without manual numpy calls
+y_train_series = y_train.to_series()
+
+tree_classifier = DecisionTreeClassifier()
+tree_classifier.fit(x_train, y_train_series)
+
+```
+
+```{python}
+from sklearn.metrics import classification_report
+
+y_pred = tree_classifier.predict(x_test)
+
+print(classification_report(y_test, y_pred))
+
+```
+
+#### 2. Can you build a model that predicts the year a house was built? Note this is a regression ML model, not a classifier. Report appropriate evaluation metrics for the model. Explain the model and the evaluation metrics you used to determine if the model is good.
+
+_I would have to say the this model worked quite well because in the end we got: Mean Absolute Error: 6.37 years, whihch means we are almost always on point or about 6 years off_
+
+```{python}
+joinedData = '''
+SELECT d.*, n.* exclude(parcel)
+FROM dwellings d
+    JOIN neighborhoods n 
+        ON d.parcel = n.parcel
+'''
+df = ctx.execute(joinedData).collect()
+
+df
+```
+```{python}
+x = df.select((cs.numeric()).exclude(["before1980","yrbuilt"]))
+y = df.select('yrbuilt')
+
+```
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, random_state=1264, train_size=.8)
+
+```
+
+```{python}
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor(random_state=42)
+```
+
+
+```{python}
+regressor.fit(x_train, y_train)
+```
+
+```{python}
+pred = regressor.predict(x_test)
+
+```
+
+```{python}
+from sklearn.metrics import mean_absolute_error
+
+mae = mean_absolute_error(y_test, pred)
+
+print(f"Mean Absolute Error: {mae:.2f} years")
+
+```

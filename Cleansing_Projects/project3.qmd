@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - Elliot"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,47 @@ execute:
     
 ---
 
-### Paste in a template
+
+```{python}
+import polars as pl
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+
+```
+
+```{python}
+df = pl.read_csv("/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv")
+```
+
+# Famous movies with the name Elliot
+E.T which released 1982
+
+Get a Life which released 1990, although the charcaters name wasn't Elliot, the actor Chris Elliott was a big hit.
+ 
+Mr. Robot which released it's finale in 2019
+
+```{python}
+elliot = df.filter(pl.col('name') == 'Elliot')
+
+(
+  ggplot(elliot, aes(x='year', y='Total'))
+  +geom_line(aes(color='name'),size=1,)
+  +scale_color_manual(values={'Elliot':'blue'})
+
+  +scale_x_continuous(format='d')
+  +geom_vline(xintercept=1982, color="red", linetype='dashed')
+  +geom_vline(xintercept=1990, color="red", linetype='dashed')
+  +geom_vline(xintercept=2019, color="red", linetype='dashed')
+
+  +geom_text(x=1965, y=3000, label="E.T released (1982)")
+  +geom_text(x=1979, y=2000, label="Get a life(1990)")
+  +geom_text(x=2005, y=250, label="Mr.Robot(2019)")
+  
+  +labs(title="Elliot...What?")
+  +theme(legend_position='right')
+
+)
+
+```

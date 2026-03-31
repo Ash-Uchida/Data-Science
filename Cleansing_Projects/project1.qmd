@@ -1,7 +1,7 @@
 ---
-title: "Client Report - [Insert Project Title]"
+title: "Client Report - What's in a Name?"
 subtitle: "Course DS 250"
-author: "[STUDENT NAME]"
+author: "Ash Uchida"
 format:
   html:
     self-contained: true
@@ -25,4 +25,114 @@ execute:
     
 ---
 
-### Paste in a template
+```{python}
+import polars as pl
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pl.read_csv("/Users/ash/Documents/Data-Science-portfolio/Cleansing_Projects/names_year_csv.csv")
+```
+
+## QUESTION 1
+
+<!-- Make sure at least one of your charts includes reference marks!! -->
+
+__How does your name at your birth year compare to its use historically? Your must provide a chart. The years labels on your charts should not include a comma.__ 
+
+_After filtering out all the names besides my own, I then created a graph to compare it's popluarity over time. As seen in the graph the red line represents the year I was born which is 2006. Before the year 2005 'Ash' was a very unique name that very few people had, but after I was born it's popularity has been continously growing as the years go by._
+
+```{python}
+# Q1
+# 1. Filter for the name
+ash = df.filter(pl.col("name") == "Ash")
+birth_year = 2006  # Let's use 'birth_year' consistently
+
+# 3. Create the chart
+(
+  ggplot(ash, aes(x="year", y="Total"))
+  + geom_line(color="blue", size=1)
+  # Use birth_year here to match your variable above
+  + geom_vline(xintercept=birth_year, linetype="dashed", color="red")
+  + scale_x_continuous(format="d")
+  + labs(
+    title="Historical Popularity of the Name 'Ash'", 
+    x="Year", 
+    y="Births")
+)
+
+
+
+```
+
+
+## QUESTION 2
+
+__Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__  
+
+_I decided to chose the name Elsa. It's a very unique name, but after the movie Frozen came out I was curious how it had affected people. And as you can clearly see the spike in it's popularity is astonding because the movie was released november 2013, and because of that I made the line in the year 2014, because it was basically released then._
+
+```{python}
+# Q2
+# frozen was released november 2013 so lets look 2014
+elsa = df.filter(pl.col("name") == "Elsa")
+release = 2014
+
+
+(
+  ggplot(elsa, aes(x="year", y="Total"))
+  +geom_line(color="purple", size=1)
+  +geom_vline(xintercept=release, linetype="dashed", color="green")
+  +scale_x_continuous(format="d")
+  +labs(
+    title="Trend of the name Elsa, Frozen came out 2014",
+    x="Year",
+    y="Births"
+  )
+)
+
+
+
+
+
+```
+
+## QUESTION 3
+
+__Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice?__  
+
+_A trend that I've noticed with their names is that Mary greatly outweighed the other names up until 1970. This makes sense considering Mary is the name of Jesus's mother, thus giving it a more holy meaning. Whereas Paul although not as popluar as Mary continuouls stay's in second throughout the timeline given. And as we reach the 1970 and further the names then start to even out in popularity_
+
+```{python}
+# Q3
+
+names_to_find = ["Mary", "Martha", "Peter", "Paul"]
+
+names= df.filter(
+  (pl.col("name").is_in(names_to_find)) &
+  (pl.col("year") >= 1920) &
+  (pl.col("year") <= 2000)
+)
+
+
+(
+  ggplot(names, aes(x="year", y="Total", color = "name")) 
+  +geom_line(size = 1)
+  +scale_x_continuous(format="d")
+  +labs(
+    title = "Christian names from 1920 - 2000",
+    x = "Year",
+    y= "Number",
+    color = "Name"
+  )
+  
+)
+
+```
+<!-- Make sure at least one of your charts includes reference marks!! -->
