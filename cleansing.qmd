@@ -17,37 +17,14 @@ Raw data is rarely usable in its original form. In these projects, I focus on id
 
 ## My Projects
 
-
-**Project 1:** Messy dataset with missing values, inconsistent dates, and duplicates  
-
+**Overview**
 **What I Did:**
 - Removed duplicates  
 - Standardized formats  
 - Handled missing values  
 
 **Tools:** Python (Polars)  
+
 [You can veiw the full Project on the side bar to your left]
 
 
-
-**Project 2:** Messy dataset with missing values, inconsistent dates, and duplicates  
-
-**What I Did:**
-- Removed duplicates  
-- Standardized formats  
-- Handled missing values  
-
-**Tools:** Python (Polars)  
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 3:** Messy dataset with missing values, inconsistent dates, and duplicates  
-
-**What I Did:**
-- Removed duplicates  
-- Standardized formats  
-- Handled missing values  
-
-**Tools:** Python (Polars)  
-[You can veiw the full Project on the side bar to your left]

@@ -26,7 +26,7 @@
     "href": "competition.html#featured-competitions",
     "title": "Competitions",
     "section": "Featured Competitions",
-    "text": "Featured Competitions\n\nHackUSU 2026 - Data App Factory (2nd Place)\nGoal: Build a secure analytics platform to convert natural language into SQL queries.\nWhat I Did:\n- Developed a Streamlit-based platform with AI-assisted SQL\n- Implemented role-based access controls for secure data handling\n- Collaborated in a 17-hour sprint to produce a polished solution\nOutcome: 2nd place in a fast-paced, high-stakes hackathon\n[View Project]",
+    "text": "Featured Competitions\nOverview\nHackathon project: analytics platform with AI-assisted SQL.\nWhat I Did:\n- Built interactive dashboards\n- Integrated AI-assisted query system\n- Implemented role-based access\nTools:\nPython, Streamlit, SQL\n[You can view the full project on the sidebar to your left]",
     "crumbs": [
       "Competitions",
       "Competition"
@@ -134,7 +134,7 @@
     "href": "ml.html#projects",
     "title": "Machine Learning",
     "section": "Projects",
-    "text": "Projects\nProject 1:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]",
+    "text": "Projects\nOverview\nWhat I Did:\n- Engineered key features\n- Trained regression models\n- Evaluated model performance\nTools:\nPython, scikit-learn, NumPy\n[You can view the full project on the sidebar to your left]",
     "crumbs": [
       "Machine Learning"
     ]
@@ -261,7 +261,17 @@
     "href": "exploration.html#my-projects",
     "title": "Data Exploration",
     "section": "My Projects",
-    "text": "My Projects\nProject 1:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]",
+    "text": "My Projects",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#projects",
+    "href": "exploration.html#projects",
+    "title": "Data Exploration",
+    "section": "Projects",
+    "text": "Projects\nOverview\nWhat I Did:\n- Calculated summary statistics\n- Plotted distributions and correlations\n- Filtered and grouped data for insights\nTools:\nPython (Pandas, Matplotlib, Seaborn)\n[You can view the full project on the sidebar to your left]",
     "crumbs": [
       "Data Exploration"
     ]
@@ -291,7 +301,7 @@
     "href": "cleansing.html#my-projects",
     "title": "Data Cleansing",
     "section": "My Projects",
-    "text": "My Projects\nProject 1: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]\nProject 2: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]\nProject 3: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]",
+    "text": "My Projects\nOverview What I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]",
     "crumbs": [
       "Data Cleansing"
     ]
@@ -360,7 +370,7 @@
     "href": "story_telling.html#projects",
     "title": "Data Storytelling",
     "section": "Projects",
-    "text": "Projects\nProject 1:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]",
+    "text": "Projects\nOverview\nAnalyzed data to tell a clear, actionable story.\nWhat I Did:\n- Explored trends and patterns in the dataset\n- Highlighted key insights visually\n- Summarized findings into a clear narrative\nTools:\nPython\n[You can view the full project on the sidebar to your left]",
     "crumbs": [
       "Story Telling"
     ]
@@ -425,7 +435,7 @@
     "href": "full_stack.html",
     "title": "Full-Stack Projects",
     "section": "",
-    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n\n\n\n\n Back to top",
+    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\n[You can view the full project on the sidebar to your left]\n\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n[You can view the full project on the sidebar to your left]\n\n\n\n\n Back to top",
     "crumbs": [
       "Full Stack"
     ]

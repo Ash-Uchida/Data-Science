@@ -17,45 +17,13 @@ Machine Learning allows us to uncover patterns, make predictions, and optimize s
 ## Projects
 
 
-**Project 1:** 
-
-**Goal:** Predict wind conditions based on historical weather data.  
-
+**Overview**  
 **What I Did:**  
-- Collected and cleaned data  
-- Built regression models to predict wind speed  
-- Evaluated performance using RMSE and visualizations  
+- Engineered key features  
+- Trained regression models  
+- Evaluated model performance  
 
-**Techniques:** Regression, feature engineering, visualization  
+**Tools:**  
+Python, scikit-learn, NumPy  
 
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 2:** 
-
-**Goal:** Predict wind conditions based on historical weather data.  
-
-**What I Did:**  
-- Collected and cleaned data  
-- Built regression models to predict wind speed  
-- Evaluated performance using RMSE and visualizations  
-
-**Techniques:** Regression, feature engineering, visualization  
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 3:** 
-
-**Goal:** Predict wind conditions based on historical weather data.  
-
-**What I Did:**  
-- Collected and cleaned data  
-- Built regression models to predict wind speed  
-- Evaluated performance using RMSE and visualizations  
-
-**Techniques:** Regression, feature engineering, visualization  
-
-[You can veiw the full Project on the side bar to your left]
+[You can view the full project on the sidebar to your left]

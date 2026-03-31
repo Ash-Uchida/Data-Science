@@ -17,61 +17,15 @@ Data storytelling combines analysis and communication to turn data into meaningf
 
 ## Projects
 
+**Overview**  
+Analyzed data to tell a clear, actionable story.
 
-**Project 1:** 
+**What I Did:**  
+- Explored trends and patterns in the dataset  
+- Highlighted key insights visually  
+- Summarized findings into a clear narrative  
 
-**Context:**  
-What situation or problem does this relate to?
+**Tools:**  
+Python  
 
-**Key Insight:**  
-The most important takeaway
-
-**Story Summary:**
-- What happened in the data
-- Why it matters
-- What it suggests
-
-**Recommendation:**  
-What action should be taken?
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 2:** 
-
-**Context:**  
-What situation or problem does this relate to?
-
-**Key Insight:**  
-The most important takeaway
-
-**Story Summary:**
-- What happened in the data
-- Why it matters
-- What it suggests
-
-**Recommendation:**  
-What action should be taken?
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 3:** 
-
-**Context:**  
-What situation or problem does this relate to?
-
-**Key Insight:**  
-The most important takeaway
-
-**Story Summary:**
-- What happened in the data
-- Why it matters
-- What it suggests
-
-**Recommendation:**  
-What action should be taken?
-
-[You can veiw the full Project on the side bar to your left]
+[You can view the full project on the sidebar to your left]

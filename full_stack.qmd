@@ -14,7 +14,9 @@ I apply full-stack skills to turn my data projects into usable applications. By 
 - Automates meeting creation and avoids double bookings  
 - Backend with Vercel, database with Supabase  
 
+[You can view the full project on the sidebar to your left]
 
+---
 
 **Project 2:** 
 
@@ -22,3 +24,5 @@ I apply full-stack skills to turn my data projects into usable applications. By 
 - Secure platform for exploring hackathon data using AI-assisted SQL  
 - Role-based access and real-time query execution  
 - Built with Streamlit, Python, and SQL
+
+[You can view the full project on the sidebar to your left]

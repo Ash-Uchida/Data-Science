@@ -17,61 +17,15 @@ Data exploration is the process of analyzing datasets to uncover patterns, trend
 
 ## My Projects
 
+## Projects
 
-**Project 1:** 
+**Overview**  
+**What I Did:**  
+- Calculated summary statistics  
+- Plotted distributions and correlations  
+- Filtered and grouped data for insights  
 
-**Dataset:** (where it came from)
+**Tools:**  
+Python (Pandas, Matplotlib, Seaborn)  
 
-**Goal:**  
-What were you trying to understand?
-
-**Key Insights:**
-- Insight 1 (trend, pattern, or relationship)
-- Insight 2
-- Insight 3
-
-**Techniques Used:**  
-Visualization, correlation analysis, etc.
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 2:** 
-
-**Dataset:** (where it came from)
-
-**Goal:**  
-What were you trying to understand?
-
-**Key Insights:**
-- Insight 1 (trend, pattern, or relationship)
-- Insight 2
-- Insight 3
-
-**Techniques Used:**  
-Visualization, correlation analysis, etc.
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
-**Project 3:** 
-
-**Dataset:** (where it came from)
-
-**Goal:**  
-What were you trying to understand?
-
-**Key Insights:**
-- Insight 1 (trend, pattern, or relationship)
-- Insight 2
-- Insight 3
-
-**Techniques Used:**  
-Visualization, correlation analysis, etc.
-
-[You can veiw the full Project on the side bar to your left]
-
-
-
+[You can view the full project on the sidebar to your left]

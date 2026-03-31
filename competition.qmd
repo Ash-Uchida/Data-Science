@@ -19,15 +19,18 @@ I participate in hackathons and data science competitions to solve challenging p
 
 ## Featured Competitions
 
-### HackUSU 2026 - Data App Factory (2nd Place)
-**Goal:** Build a secure analytics platform to convert natural language into SQL queries.  
-**What I Did:**  
-- Developed a Streamlit-based platform with AI-assisted SQL  
-- Implemented role-based access controls for secure data handling  
-- Collaborated in a 17-hour sprint to produce a polished solution  
-**Outcome:** 2nd place in a fast-paced, high-stakes hackathon  
+**Overview**  
+Hackathon project: analytics platform with AI-assisted SQL.
 
-[View Project]
+**What I Did:**  
+- Built interactive dashboards  
+- Integrated AI-assisted query system  
+- Implemented role-based access  
+
+**Tools:**  
+Python, Streamlit, SQL  
+
+[You can view the full project on the sidebar to your left]
 
 ---
 
