@@ -1,9 +1,7 @@
 ---
 layout: cv
-title: Ash Uchida's CV
+title: Ash Uchida's Resume
 ---
-# Ash Uchida
-
 Aspiring Software Engineer and Data Analyst
 
 <div id="webaddress">
