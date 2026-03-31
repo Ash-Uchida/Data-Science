@@ -2,20 +2,42 @@
   {
     "objectID": "competition.html",
     "href": "competition.html",
-    "title": "about me",
+    "title": "Competitions",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "I participate in hackathons and data science competitions to solve challenging problems under tight deadlines. These experiences help me sharpen my skills, collaborate effectively, and create impactful solutions.",
     "crumbs": [
       "Competitions",
       "Competition"
     ]
   },
   {
-    "objectID": "competition.html#title-2-header",
-    "href": "competition.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "competition.html#my-competition-approach",
+    "href": "competition.html#my-competition-approach",
+    "title": "Competitions",
+    "section": "My Competition Approach",
+    "text": "My Competition Approach\n\nQuickly understand the problem and define goals\n\nClean and explore data efficiently\n\nApply machine learning or data engineering as needed\n\nCommunicate results through clear visualizations and reports\n\nCollaborate effectively in team-based environments",
+    "crumbs": [
+      "Competitions",
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "competition.html#featured-competitions",
+    "href": "competition.html#featured-competitions",
+    "title": "Competitions",
+    "section": "Featured Competitions",
+    "text": "Featured Competitions\n\nHackUSU 2026 - Data App Factory (2nd Place)\nGoal: Build a secure analytics platform to convert natural language into SQL queries.\nWhat I Did:\n- Developed a Streamlit-based platform with AI-assisted SQL\n- Implemented role-based access controls for secure data handling\n- Collaborated in a 17-hour sprint to produce a polished solution\nOutcome: 2nd place in a fast-paced, high-stakes hackathon\n[View Project]",
+    "crumbs": [
+      "Competitions",
+      "Competition"
+    ]
+  },
+  {
+    "objectID": "competition.html#why-competitions-matter",
+    "href": "competition.html#why-competitions-matter",
+    "title": "Competitions",
+    "section": "Why Competitions Matter",
+    "text": "Why Competitions Matter\nCompetitions let me apply my data science and software engineering skills under pressure, explore new technologies, and deliver practical solutions quickly. They also show collaboration, problem-solving, and creativity—key skills for any data scientist.",
     "crumbs": [
       "Competitions",
       "Competition"
@@ -90,19 +112,29 @@
   {
     "objectID": "ml.html",
     "href": "ml.html",
-    "title": "about me",
+    "title": "Machine Learning",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Machine Learning allows us to uncover patterns, make predictions, and optimize solutions using data. In these projects, I build models that provide actionable insights and demonstrate real-world impact.",
     "crumbs": [
       "Machine Learning"
     ]
   },
   {
-    "objectID": "ml.html#title-2-header",
-    "href": "ml.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "ml.html#my-approach-to-machine-learning",
+    "href": "ml.html#my-approach-to-machine-learning",
+    "title": "Machine Learning",
+    "section": "My Approach to Machine Learning",
+    "text": "My Approach to Machine Learning\n\nData preprocessing and feature engineering\n\nSupervised and unsupervised learning\n\nModel evaluation, validation, and tuning\n\nUsing Python libraries: scikit-learn, Pandas, NumPy\n\nVisualizing results to communicate model performance",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "ml.html#projects",
+    "href": "ml.html#projects",
+    "title": "Machine Learning",
+    "section": "Projects",
+    "text": "Projects\nProject 1:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nGoal: Predict wind conditions based on historical weather data.\nWhat I Did:\n- Collected and cleaned data\n- Built regression models to predict wind speed\n- Evaluated performance using RMSE and visualizations\nTechniques: Regression, feature engineering, visualization\n[You can veiw the full Project on the side bar to your left]",
     "crumbs": [
       "Machine Learning"
     ]
@@ -207,19 +239,29 @@
   {
     "objectID": "exploration.html",
     "href": "exploration.html",
-    "title": "about me",
+    "title": "Data Exploration",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Data exploration is the process of analyzing datasets to uncover patterns, trends, and insights. In these projects, I use statistical analysis and visualization to better understand data and support data-driven decisions.",
     "crumbs": [
       "Data Exploration"
     ]
   },
   {
-    "objectID": "exploration.html#title-2-header",
-    "href": "exploration.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "exploration.html#my-approach-to-data-exploration",
+    "href": "exploration.html#my-approach-to-data-exploration",
+    "title": "Data Exploration",
+    "section": "My Approach to Data Exploration",
+    "text": "My Approach to Data Exploration\n\nIdentifying trends and patterns in data\nUsing visualizations to communicate insights\nAnalyzing distributions and relationships\nDetecting outliers and anomalies\nGenerating questions and hypotheses from data",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#my-projects",
+    "href": "exploration.html#my-projects",
+    "title": "Data Exploration",
+    "section": "My Projects",
+    "text": "My Projects\nProject 1:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nDataset: (where it came from)\nGoal:\nWhat were you trying to understand?\nKey Insights: - Insight 1 (trend, pattern, or relationship) - Insight 2 - Insight 3\nTechniques Used:\nVisualization, correlation analysis, etc.\n[You can veiw the full Project on the side bar to your left]",
     "crumbs": [
       "Data Exploration"
     ]
@@ -227,19 +269,29 @@
   {
     "objectID": "cleansing.html",
     "href": "cleansing.html",
-    "title": "about me",
+    "title": "Data Cleansing",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Raw data is rarely usable in its original form. In these projects, I focus on identifying inconsistencies, handling missing values, and transforming messy datasets into clean, reliable data ready for analysis.",
     "crumbs": [
       "Data Cleansing"
     ]
   },
   {
-    "objectID": "cleansing.html#title-2-header",
-    "href": "cleansing.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "cleansing.html#my-approach-to-data-cleaning",
+    "href": "cleansing.html#my-approach-to-data-cleaning",
+    "title": "Data Cleansing",
+    "section": "My Approach to Data Cleaning",
+    "text": "My Approach to Data Cleaning\n\nHandling missing values (removal, imputation)\nStandardizing formats (dates, text, categories)\nRemoving duplicates and inconsistencies\nValidating data integrity\nPreparing data for analysis and modeling",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#my-projects",
+    "href": "cleansing.html#my-projects",
+    "title": "Data Cleansing",
+    "section": "My Projects",
+    "text": "My Projects\nProject 1: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]\nProject 2: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]\nProject 3: Messy dataset with missing values, inconsistent dates, and duplicates\nWhat I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]",
     "crumbs": [
       "Data Cleansing"
     ]
@@ -260,14 +312,14 @@
     "href": "index.html",
     "title": "My Journey in Data Science Programming",
     "section": "",
-    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\n🎓 BYU-Idaho — 4.0 GPA\n\n🏆 2nd Place Hackathon Winner\n\n💻 Full-Stack & Data Science Projects\n\n🔐 Cybersecurity Certificate"
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
   },
   {
     "objectID": "index.html#ash-uchida",
     "href": "index.html#ash-uchida",
     "title": "My Journey in Data Science Programming",
     "section": "",
-    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\n🎓 BYU-Idaho — 4.0 GPA\n\n🏆 2nd Place Hackathon Winner\n\n💻 Full-Stack & Data Science Projects\n\n🔐 Cybersecurity Certificate"
+    "text": "I build secure, data-driven applications that transform complex problems into scalable solutions. My work combines full-stack development, machine learning, and data analysis to create efficient and user-focused systems.\nCurrently a Computer Science student at BYU-Idaho with a 4.0 GPA.\n\nBYU-Idaho — 4.0 GPA\n\n2nd Place Hackathon Winner\n\nFull-Stack & Data Science Projects\n\nCybersecurity Certificate"
   },
   {
     "objectID": "index.html#featured-work",
@@ -286,19 +338,29 @@
   {
     "objectID": "story_telling.html",
     "href": "story_telling.html",
-    "title": "about me",
+    "title": "Data Storytelling",
     "section": "",
-    "text": "MarkDown Basics",
+    "text": "Data storytelling combines analysis and communication to turn data into meaningful narratives. In these projects, I focus on presenting insights clearly through visualizations and structured storytelling to support decision-making.",
     "crumbs": [
       "Story Telling"
     ]
   },
   {
-    "objectID": "story_telling.html#title-2-header",
-    "href": "story_telling.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "objectID": "story_telling.html#my-approach-to-data-storytelling",
+    "href": "story_telling.html#my-approach-to-data-storytelling",
+    "title": "Data Storytelling",
+    "section": "My Approach to Data Storytelling",
+    "text": "My Approach to Data Storytelling\n\nFraming problems in a real-world context\nUsing visuals to highlight key insights\nSimplifying complex data into clear messages\nStructuring analysis as a narrative\nProviding actionable recommendations",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "story_telling.html#projects",
+    "href": "story_telling.html#projects",
+    "title": "Data Storytelling",
+    "section": "Projects",
+    "text": "Projects\nProject 1:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]\nProject 2:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]\nProject 3:\nContext:\nWhat situation or problem does this relate to?\nKey Insight:\nThe most important takeaway\nStory Summary: - What happened in the data - Why it matters - What it suggests\nRecommendation:\nWhat action should be taken?\n[You can veiw the full Project on the side bar to your left]",
     "crumbs": [
       "Story Telling"
     ]
@@ -361,19 +423,9 @@
   {
     "objectID": "full_stack.html",
     "href": "full_stack.html",
-    "title": "about me",
+    "title": "Full-Stack Projects",
     "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Full Stack"
-    ]
-  },
-  {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
+    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n\n\n\n\n Back to top",
     "crumbs": [
       "Full Stack"
     ]

@@ -1,10 +1,36 @@
 ---
-title: "about me"
+title: "Competitions"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
 
-# Title 1 Header
-## Title 2 Header
+I participate in hackathons and data science competitions to solve challenging problems under tight deadlines. These experiences help me sharpen my skills, collaborate effectively, and create impactful solutions.
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+---
+
+## My Competition Approach
+
+- Quickly understand the problem and define goals  
+- Clean and explore data efficiently  
+- Apply machine learning or data engineering as needed  
+- Communicate results through clear visualizations and reports  
+- Collaborate effectively in team-based environments
+
+---
+
+## Featured Competitions
+
+### HackUSU 2026 - Data App Factory (2nd Place)
+**Goal:** Build a secure analytics platform to convert natural language into SQL queries.  
+**What I Did:**  
+- Developed a Streamlit-based platform with AI-assisted SQL  
+- Implemented role-based access controls for secure data handling  
+- Collaborated in a 17-hour sprint to produce a polished solution  
+**Outcome:** 2nd place in a fast-paced, high-stakes hackathon  
+
+[View Project]
+
+---
+
+## Why Competitions Matter
+
+Competitions let me apply my **data science and software engineering skills under pressure**, explore new technologies, and deliver practical solutions quickly. They also show **collaboration, problem-solving, and creativity**—key skills for any data scientist.

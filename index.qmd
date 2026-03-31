@@ -14,10 +14,10 @@ I build secure, data-driven applications that transform complex problems into sc
 
 Currently a Computer Science student at BYU-Idaho with a 4.0 GPA.
 
-- 🎓 BYU-Idaho — 4.0 GPA  
-- 🏆 2nd Place Hackathon Winner  
-- 💻 Full-Stack & Data Science Projects  
-- 🔐 Cybersecurity Certificate  
+- BYU-Idaho — 4.0 GPA  
+- 2nd Place Hackathon Winner  
+- Full-Stack & Data Science Projects  
+- Cybersecurity Certificate  
 
 ## Featured Work
 

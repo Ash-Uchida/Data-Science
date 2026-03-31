@@ -1,10 +1,24 @@
 ---
-title: "about me"
+title: "Full-Stack Projects"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
+I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+### Featured Projects
+
+**Project 1:** 
+
+**Zoom Zone**  
+- Full-stack scheduling app integrating Google Calendar & Zoom  
+- Automates meeting creation and avoids double bookings  
+- Backend with Vercel, database with Supabase  
+
+
+
+**Project 2:** 
+
+**Hackathon Analytics Platform**  
+- Secure platform for exploring hackathon data using AI-assisted SQL  
+- Role-based access and real-time query execution  
+- Built with Streamlit, Python, and SQL

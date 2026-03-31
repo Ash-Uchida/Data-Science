@@ -1,11 +1,61 @@
 ---
-title: "about me"
+title: "Machine Learning"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
+Machine Learning allows us to uncover patterns, make predictions, and optimize solutions using data. In these projects, I build models that provide actionable insights and demonstrate real-world impact.
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## My Approach to Machine Learning
 
+- Data preprocessing and feature engineering  
+- Supervised and unsupervised learning  
+- Model evaluation, validation, and tuning  
+- Using Python libraries: scikit-learn, Pandas, NumPy  
+- Visualizing results to communicate model performance
+
+
+## Projects
+
+
+**Project 1:** 
+
+**Goal:** Predict wind conditions based on historical weather data.  
+
+**What I Did:**  
+- Collected and cleaned data  
+- Built regression models to predict wind speed  
+- Evaluated performance using RMSE and visualizations  
+
+**Techniques:** Regression, feature engineering, visualization  
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 2:** 
+
+**Goal:** Predict wind conditions based on historical weather data.  
+
+**What I Did:**  
+- Collected and cleaned data  
+- Built regression models to predict wind speed  
+- Evaluated performance using RMSE and visualizations  
+
+**Techniques:** Regression, feature engineering, visualization  
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 3:** 
+
+**Goal:** Predict wind conditions based on historical weather data.  
+
+**What I Did:**  
+- Collected and cleaned data  
+- Built regression models to predict wind speed  
+- Evaluated performance using RMSE and visualizations  
+
+**Techniques:** Regression, feature engineering, visualization  
+
+[You can veiw the full Project on the side bar to your left]

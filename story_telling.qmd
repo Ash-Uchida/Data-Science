@@ -1,10 +1,77 @@
 ---
-title: "about me"
+title: "Data Storytelling"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
+Data storytelling combines analysis and communication to turn data into meaningful narratives. In these projects, I focus on presenting insights clearly through visualizations and structured storytelling to support decision-making.
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## My Approach to Data Storytelling
+
+- Framing problems in a real-world context
+- Using visuals to highlight key insights
+- Simplifying complex data into clear messages
+- Structuring analysis as a narrative
+- Providing actionable recommendations
+
+
+
+## Projects
+
+
+**Project 1:** 
+
+**Context:**  
+What situation or problem does this relate to?
+
+**Key Insight:**  
+The most important takeaway
+
+**Story Summary:**
+- What happened in the data
+- Why it matters
+- What it suggests
+
+**Recommendation:**  
+What action should be taken?
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 2:** 
+
+**Context:**  
+What situation or problem does this relate to?
+
+**Key Insight:**  
+The most important takeaway
+
+**Story Summary:**
+- What happened in the data
+- Why it matters
+- What it suggests
+
+**Recommendation:**  
+What action should be taken?
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 3:** 
+
+**Context:**  
+What situation or problem does this relate to?
+
+**Key Insight:**  
+The most important takeaway
+
+**Story Summary:**
+- What happened in the data
+- Why it matters
+- What it suggests
+
+**Recommendation:**  
+What action should be taken?
+
+[You can veiw the full Project on the side bar to your left]

@@ -1,10 +1,53 @@
 ---
-title: "about me"
+title: "Data Cleansing"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
+Raw data is rarely usable in its original form. In these projects, I focus on identifying inconsistencies, handling missing values, and transforming messy datasets into clean, reliable data ready for analysis.
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## My Approach to Data Cleaning
+
+- Handling missing values (removal, imputation)
+- Standardizing formats (dates, text, categories)
+- Removing duplicates and inconsistencies
+- Validating data integrity
+- Preparing data for analysis and modeling
+
+
+
+## My Projects
+
+
+**Project 1:** Messy dataset with missing values, inconsistent dates, and duplicates  
+
+**What I Did:**
+- Removed duplicates  
+- Standardized formats  
+- Handled missing values  
+
+**Tools:** Python (Polars)  
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 2:** Messy dataset with missing values, inconsistent dates, and duplicates  
+
+**What I Did:**
+- Removed duplicates  
+- Standardized formats  
+- Handled missing values  
+
+**Tools:** Python (Polars)  
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 3:** Messy dataset with missing values, inconsistent dates, and duplicates  
+
+**What I Did:**
+- Removed duplicates  
+- Standardized formats  
+- Handled missing values  
+
+**Tools:** Python (Polars)  
+[You can veiw the full Project on the side bar to your left]

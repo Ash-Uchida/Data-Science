@@ -1,10 +1,77 @@
 ---
-title: "about me"
+title: "Data Exploration"
 subtitle: "my data science portfolio"
-# use quarto markdown to 
 ---
+Data exploration is the process of analyzing datasets to uncover patterns, trends, and insights. In these projects, I use statistical analysis and visualization to better understand data and support data-driven decisions.
 
-# Title 1 Header
-## Title 2 Header
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## My Approach to Data Exploration
+
+- Identifying trends and patterns in data
+- Using visualizations to communicate insights
+- Analyzing distributions and relationships
+- Detecting outliers and anomalies
+- Generating questions and hypotheses from data
+
+
+
+## My Projects
+
+
+**Project 1:** 
+
+**Dataset:** (where it came from)
+
+**Goal:**  
+What were you trying to understand?
+
+**Key Insights:**
+- Insight 1 (trend, pattern, or relationship)
+- Insight 2
+- Insight 3
+
+**Techniques Used:**  
+Visualization, correlation analysis, etc.
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 2:** 
+
+**Dataset:** (where it came from)
+
+**Goal:**  
+What were you trying to understand?
+
+**Key Insights:**
+- Insight 1 (trend, pattern, or relationship)
+- Insight 2
+- Insight 3
+
+**Techniques Used:**  
+Visualization, correlation analysis, etc.
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
+**Project 3:** 
+
+**Dataset:** (where it came from)
+
+**Goal:**  
+What were you trying to understand?
+
+**Key Insights:**
+- Insight 1 (trend, pattern, or relationship)
+- Insight 2
+- Insight 3
+
+**Techniques Used:**  
+Visualization, correlation analysis, etc.
+
+[You can veiw the full Project on the side bar to your left]
+
+
+
