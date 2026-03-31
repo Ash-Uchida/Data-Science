@@ -4093,10 +4093,6 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <span class="menu-text">Machine Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../full_stack.qmd"> 
-<span class="menu-text">Full Stack</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../competition.html"> 
 <span class="menu-text">Competitions</span></a>
   </li>  
@@ -4190,7 +4186,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 
 
 
-<div id="d99b0eda" class="cell" data-execution_count="1">
+<div id="4a39ef13" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -4209,7 +4205,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="bf487e12" class="cell" data-execution_count="2">
+<div id="ae15130e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the main dwellings data</span></span>
@@ -4334,7 +4330,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 </tr>
 </tbody>
 </table>
-<div id="5a56fb6b" class="cell" data-execution_count="3">
+<div id="f994af0d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>joinedData <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -5366,14 +5362,14 @@ white-space: pre-wrap;
 </div>
 </div>
 </div>
-<div id="5d8b1637" class="cell" data-execution_count="4">
+<div id="c8573efc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> df.select((cs.numeric()).exclude([<span class="st">&quot;before1980&quot;</span>,<span class="st">&quot;yrbuilt&quot;</span>]))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.select(<span class="st">&#39;before1980&#39;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="02d46106" class="cell" data-execution_count="5">
+<div id="ca88c5d2" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -5381,7 +5377,7 @@ white-space: pre-wrap;
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x,y, random_state<span class="op">=</span><span class="dv">12394</span>, train_size<span class="op">=</span><span class="fl">.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="32a34214" class="cell" data-execution_count="6">
+<div id="3ebe091c" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
@@ -6209,7 +6205,7 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-1');</script>
 </div>
 </div>
-<div id="34e6aa07" class="cell" data-execution_count="7">
+<div id="f7240a57" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
@@ -6222,10 +6218,10 @@ forceTheme('sk-container-id-1');</script>
 <pre><code>              precision    recall  f1-score   support
 
            0       0.94      0.95      0.94      2134
-           1       0.97      0.96      0.96      3459
+           1       0.97      0.96      0.97      3459
 
     accuracy                           0.96      5593
-   macro avg       0.95      0.95      0.95      5593
+   macro avg       0.95      0.96      0.96      5593
 weighted avg       0.96      0.96      0.96      5593
 </code></pre>
 </div>
@@ -6234,7 +6230,7 @@ weighted avg       0.96      0.96      0.96      5593
 <section id="can-you-build-a-model-that-predicts-the-year-a-house-was-built-note-this-is-a-regression-ml-model-not-a-classifier.-report-appropriate-evaluation-metrics-for-the-model.-explain-the-model-and-the-evaluation-metrics-you-used-to-determine-if-the-model-is-good." class="level4">
 <h4 class="anchored" data-anchor-id="can-you-build-a-model-that-predicts-the-year-a-house-was-built-note-this-is-a-regression-ml-model-not-a-classifier.-report-appropriate-evaluation-metrics-for-the-model.-explain-the-model-and-the-evaluation-metrics-you-used-to-determine-if-the-model-is-good.">2. Can you build a model that predicts the year a house was built? Note this is a regression ML model, not a classifier. Report appropriate evaluation metrics for the model. Explain the model and the evaluation metrics you used to determine if the model is good.</h4>
 <p><em>I would have to say the this model worked quite well because in the end we got: Mean Absolute Error: 6.37 years, whihch means we are almost always on point or about 6 years off</em></p>
-<div id="a71ad397" class="cell" data-execution_count="8">
+<div id="be7509bd" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>joinedData <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
@@ -7266,14 +7262,14 @@ white-space: pre-wrap;
 </div>
 </div>
 </div>
-<div id="b144d14c" class="cell" data-execution_count="9">
+<div id="60051a2c" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> df.select((cs.numeric()).exclude([<span class="st">&quot;before1980&quot;</span>,<span class="st">&quot;yrbuilt&quot;</span>]))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df.select(<span class="st">&#39;yrbuilt&#39;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="adb07e8b" class="cell" data-execution_count="10">
+<div id="244935c8" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -7281,14 +7277,14 @@ white-space: pre-wrap;
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x,y, random_state<span class="op">=</span><span class="dv">1264</span>, train_size<span class="op">=</span><span class="fl">.8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="5cfa1350" class="cell" data-execution_count="11">
+<div id="15e53ea3" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>regressor <span class="op">=</span> RandomForestRegressor(random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="8abc6633" class="cell" data-execution_count="12">
+<div id="db2872a0" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>regressor.fit(x_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -8162,13 +8158,13 @@ function forceTheme(elementId) {
 forceTheme('sk-container-id-2');</script>
 </div>
 </div>
-<div id="ddd0513b" class="cell" data-execution_count="13">
+<div id="db8f47e3" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> regressor.predict(x_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="9f15d781" class="cell" data-execution_count="14">
+<div id="a82d93fa" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error</span>
