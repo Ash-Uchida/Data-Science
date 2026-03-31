@@ -4093,10 +4093,6 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <span class="menu-text">Machine Learning</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../full_stack.qmd"> 
-<span class="menu-text">Full Stack</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../competition.html"> 
 <span class="menu-text">Competitions</span></a>
   </li>  
@@ -4198,7 +4194,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
   <li><a href="#question-3" id="toc-question-3">QUESTION 3</a></li>
   </ul>
 </nav>
-<div id="7c675b69" class="cell" data-execution_count="1">
+<div id="b71b53ea" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -4209,7 +4205,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="1023bfca" class="cell" data-execution_count="2">
+<div id="83b6b78e" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html</span></span>
@@ -4224,7 +4220,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <h2 class="anchored" data-anchor-id="question-1">QUESTION 1</h2>
 <p><strong>Write an SQL query that provides playerID, yearID, and batting average for players with at least 1 at bat that year. Sort the table from highest batting average to lowest, and then by playerid alphabetically. Show the top 5 results in your report.</strong></p>
 <p><strong>These first 2 tables just helps me see what’s inside my database</strong></p>
-<div id="2dd95519" class="cell" data-execution_count="3">
+<div id="1afb2362" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Query to see all tables</span></span>
@@ -4253,7 +4249,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 └─────────────────────┘</code></pre>
 </div>
 </div>
-<div id="b1ee18ff" class="cell" data-execution_count="4">
+<div id="04be79eb" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the column names for the batting table</span></span>
@@ -4281,7 +4277,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 └─────┴──────────┴──────────────┴─────────┴────────────┴─────┘</code></pre>
 </div>
 </div>
-<div id="2f44bd4a" class="cell" data-execution_count="5">
+<div id="e7b83c36" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
@@ -4360,7 +4356,7 @@ white-space: pre-wrap;
 <h2 class="anchored" data-anchor-id="question-2">QUESTION 2</h2>
 <p><strong>Use the same query as above, but only include players with at least 10 at bats that year. Print the top 5 results.</strong></p>
 <p><em>We just need to the change the num for the where part</em></p>
-<div id="b4f77c29" class="cell" data-execution_count="6">
+<div id="71402da9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
@@ -4435,7 +4431,7 @@ white-space: pre-wrap;
 <h2 class="anchored" data-anchor-id="question-3">QUESTION 3</h2>
 <p><strong>Now modify the SQL query to calculate the batting average for players over their entire careers (all years combined). Only include players with at least 100 at bats over their entire career, and print the top 5 results.</strong></p>
 <p><em>For here we need to make sure that we use having and not where when filtering the AB &gt; 100 when we are lookinng at the sum</em></p>
-<div id="816cade8" class="cell" data-execution_count="7">
+<div id="046f48a6" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
