@@ -25,7 +25,7 @@ Analyzed data to tell a clear, actionable story.
 - Highlighted key insights visually  
 - Summarized findings into a clear narrative  
 
-**Tools:**  
-Python  
+**Tools:** 
+Python (Polars)  
 
-[You can view the full project on the sidebar to your left]
+[You can view the full projects on the sidebar to your left]

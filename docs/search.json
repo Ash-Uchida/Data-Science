@@ -271,7 +271,7 @@
     "href": "exploration.html#projects",
     "title": "Data Exploration",
     "section": "Projects",
-    "text": "Projects\nOverview\nWhat I Did:\n- Calculated summary statistics\n- Plotted distributions and correlations\n- Filtered and grouped data for insights\nTools:\nPython (Pandas, Matplotlib, Seaborn)\n[You can view the full project on the sidebar to your left]",
+    "text": "Projects\nOverview\nWhat I Did:\n- Calculated summary statistics\n- Plotted distributions and correlations\n- Filtered and grouped data for insights\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
     "crumbs": [
       "Data Exploration"
     ]
@@ -301,7 +301,7 @@
     "href": "cleansing.html#my-projects",
     "title": "Data Cleansing",
     "section": "My Projects",
-    "text": "My Projects\nOverview What I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Project on the side bar to your left]",
+    "text": "My Projects\nOverview What I Did: - Removed duplicates\n- Standardized formats\n- Handled missing values\nTools: Python (Polars)\n[You can veiw the full Projects on the side bar to your left]",
     "crumbs": [
       "Data Cleansing"
     ]
@@ -370,7 +370,7 @@
     "href": "story_telling.html#projects",
     "title": "Data Storytelling",
     "section": "Projects",
-    "text": "Projects\nOverview\nAnalyzed data to tell a clear, actionable story.\nWhat I Did:\n- Explored trends and patterns in the dataset\n- Highlighted key insights visually\n- Summarized findings into a clear narrative\nTools:\nPython\n[You can view the full project on the sidebar to your left]",
+    "text": "Projects\nOverview\nAnalyzed data to tell a clear, actionable story.\nWhat I Did:\n- Explored trends and patterns in the dataset\n- Highlighted key insights visually\n- Summarized findings into a clear narrative\nTools: Python (Polars)\n[You can view the full projects on the sidebar to your left]",
     "crumbs": [
       "Story Telling"
     ]
@@ -435,7 +435,7 @@
     "href": "full_stack.html",
     "title": "Full-Stack Projects",
     "section": "",
-    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\n[You can view the full project on the sidebar to your left]\n\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n[You can view the full project on the sidebar to your left]\n\n\n\n\n Back to top",
+    "text": "I apply full-stack skills to turn my data projects into usable applications. By integrating databases, APIs, and interactive interfaces, I make my analysis actionable for real users.\n\nFeatured Projects\nProject 1:\nZoom Zone\n- Full-stack scheduling app integrating Google Calendar & Zoom\n- Automates meeting creation and avoids double bookings\n- Backend with Vercel, database with Supabase\n[You can view the full project on the sidebar to your left]\n\nProject 2:\nHackathon Analytics Platform\n- Secure platform for exploring hackathon data using AI-assisted SQL\n- Role-based access and real-time query execution\n- Built with Streamlit, Python, and SQL\n[You can view the full projects on the sidebar to your left]\n\n\n\n\n Back to top",
     "crumbs": [
       "Full Stack"
     ]
